@@ -1,0 +1,1569 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>&#29790;&#24184;&#26032;&#21697;&#37197;&#26041;&#36895;&#35760;</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg-0: #07101d;
+        --bg-1: #0a1526;
+        --bg-2: #0d1b31;
+        --panel: rgba(255, 255, 255, 0.12);
+        --panel-strong: rgba(255, 255, 255, 0.18);
+        --line: rgba(255, 255, 255, 0.12);
+        --line-strong: rgba(255, 255, 255, 0.2);
+        --text: #eef5ff;
+        --muted: #9fb0c6;
+        --cyan: #7cf1ff;
+        --lime: #b7ff7e;
+        --blue: #5d7dff;
+        --amber: #ffc77a;
+        --shadow: 0 30px 80px rgba(3, 10, 22, 0.34);
+        --shadow-soft: 0 18px 40px rgba(3, 10, 22, 0.2);
+        --radius-xl: 34px;
+        --radius-lg: 24px;
+        --radius-md: 18px;
+        --content-width: 1180px;
+        --nav-height: 74px;
+        --font-display: "Cormorant Garamond", "Times New Roman", Georgia, serif;
+        --font-ui: "Noto Sans SC", "Manrope", "PingFang SC", "Microsoft YaHei", sans-serif;
+        --ease: cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: var(--font-ui);
+        color: var(--text);
+        background:
+          radial-gradient(circle at 14% 0%, rgba(93, 125, 255, 0.3), transparent 26%),
+          radial-gradient(circle at 84% 14%, rgba(124, 241, 255, 0.18), transparent 22%),
+          radial-gradient(circle at 78% 78%, rgba(183, 255, 126, 0.12), transparent 20%),
+          linear-gradient(180deg, var(--bg-0), var(--bg-1) 36%, var(--bg-2));
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        background:
+          linear-gradient(120deg, rgba(255, 255, 255, 0.08), transparent 22%, transparent 78%, rgba(255, 255, 255, 0.04)),
+          radial-gradient(circle at 18% 18%, rgba(255, 255, 255, 0.06), transparent 26%);
+        opacity: 0.75;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      button,
+      input {
+        font: inherit;
+      }
+
+      mark {
+        padding: 0 0.15em;
+        border-radius: 0.35em;
+        background: rgba(255, 199, 122, 0.92);
+        color: #09111d;
+      }
+
+      .shell {
+        width: min(var(--content-width), calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      .glass {
+        position: relative;
+        border: 1px solid var(--line-strong);
+        background:
+          radial-gradient(circle at 16% 10%, rgba(255, 255, 255, 0.16), transparent 24%),
+          radial-gradient(circle at 84% 88%, rgba(124, 241, 255, 0.08), transparent 30%),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.07) 36%, rgba(255, 255, 255, 0.03));
+        backdrop-filter: blur(26px) saturate(160%);
+        box-shadow: var(--shadow);
+        overflow: hidden;
+      }
+
+      .glass::before {
+        content: "";
+        position: absolute;
+        inset: 1px;
+        border-radius: inherit;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.18), transparent 30%, rgba(255, 255, 255, 0.05));
+        pointer-events: none;
+        opacity: 0.92;
+      }
+
+      .glass > * {
+        position: relative;
+        z-index: 1;
+      }
+
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 40;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        min-height: var(--nav-height);
+        padding: 14px clamp(20px, 4vw, 48px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03)),
+          rgba(10, 18, 32, 0.46);
+        backdrop-filter: blur(26px) saturate(150%);
+        transition: padding 240ms ease, box-shadow 240ms ease;
+      }
+
+      .topbar.compact {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.22);
+      }
+
+      .brand {
+        font-family: var(--font-display);
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .brand-sub {
+        margin: 2px 0 0;
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 18px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: 1.02fr 0.98fr;
+        gap: 28px;
+        align-items: center;
+        min-height: calc(100vh - var(--nav-height));
+        padding: 42px 0 28px;
+      }
+
+      .eyebrow {
+        margin: 0 0 12px;
+        color: #8ea1b8;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2 {
+        margin: 0;
+        line-height: 1.04;
+        letter-spacing: -0.05em;
+      }
+
+      .hero h1 {
+        max-width: 10ch;
+        font-size: clamp(40px, 6vw, 78px);
+      }
+
+      .hero-copy p,
+      .hero-copy li,
+      .toolbar-copy p,
+      .card-body p,
+      .card-body li,
+      .search-summary {
+        color: var(--muted);
+        line-height: 1.72;
+      }
+
+      .hero-text {
+        margin: 18px 0 0;
+        max-width: 560px;
+        font-size: clamp(15px, 1.6vw, 19px);
+      }
+
+      .hero-actions,
+      .chip-row,
+      .filter-row,
+      .quick-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .hero-actions {
+        margin-top: 24px;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 42px;
+        padding: 0 18px;
+        border: 1px solid transparent;
+        border-radius: 999px;
+        font-size: 13px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease, background 220ms ease;
+      }
+
+      .button:hover {
+        transform: translateY(-1px);
+      }
+
+      .button-primary {
+        color: #07111d;
+        background: linear-gradient(135deg, var(--cyan), var(--lime));
+        box-shadow: 0 14px 34px rgba(124, 241, 255, 0.16);
+      }
+
+      .button-secondary {
+        color: var(--text);
+        background: rgba(255, 255, 255, 0.08);
+        border-color: rgba(255, 255, 255, 0.08);
+      }
+
+      .hero-panel {
+        min-height: 520px;
+        border-radius: 40px;
+        padding: 22px;
+      }
+
+      .hero-stage {
+        position: relative;
+        min-height: 474px;
+        border-radius: 30px;
+      }
+
+      .hero-stage::before,
+      .hero-stage::after {
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(18px);
+        pointer-events: none;
+      }
+
+      .hero-stage::before {
+        width: 280px;
+        height: 280px;
+        right: -8%;
+        top: -10%;
+        background: radial-gradient(circle, rgba(93, 125, 255, 0.72), transparent 70%);
+      }
+
+      .hero-stage::after {
+        width: 300px;
+        height: 300px;
+        left: -10%;
+        bottom: -12%;
+        background: radial-gradient(circle, rgba(183, 255, 126, 0.62), transparent 70%);
+      }
+
+      .wordmark {
+        position: absolute;
+        inset: 22px 22px auto;
+        min-height: 420px;
+        border-radius: 34px;
+        padding: 26px;
+      }
+
+      .wordmark-shell {
+        min-height: 368px;
+        display: grid;
+        align-content: center;
+        justify-items: center;
+        text-align: center;
+      }
+
+      .wordmark-label {
+        display: inline-flex;
+        padding: 8px 14px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: rgba(255, 255, 255, 0.08);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: rgba(238, 245, 255, 0.84);
+      }
+
+      .wordmark-title {
+        margin: 18px 0 0;
+        font-family: var(--font-display);
+        font-size: clamp(44px, 6vw, 72px);
+        line-height: 0.9;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        text-shadow: 0 8px 26px rgba(3, 10, 22, 0.28);
+      }
+
+      .wordmark-title span {
+        display: block;
+      }
+
+      .wordmark-meta {
+        margin: 14px 0 0;
+        color: rgba(238, 245, 255, 0.72);
+        font-size: 11px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .floating-pill {
+        position: absolute;
+        padding: 8px 12px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: rgba(255, 255, 255, 0.08);
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: rgba(238, 245, 255, 0.82);
+        box-shadow: var(--shadow-soft);
+        animation: float 7s ease-in-out infinite;
+      }
+
+      .pill-a { left: 18px; top: 20px; }
+      .pill-b { right: 18px; top: 84px; animation-delay: 1.3s; }
+      .pill-c { left: 50%; bottom: 18px; transform: translateX(-50%); animation-delay: 2.4s; }
+
+      .hero-grid {
+        position: absolute;
+        inset: auto 24px 24px 24px;
+        display: grid;
+        gap: 14px;
+      }
+
+      .hero-info {
+        border-radius: 24px;
+        padding: 18px;
+      }
+
+      .hero-info strong {
+        display: block;
+        margin-top: 8px;
+        font-size: 26px;
+        letter-spacing: -0.04em;
+      }
+
+      .hero-info p {
+        margin: 8px 0 0;
+        color: var(--muted);
+        line-height: 1.6;
+        font-size: 13px;
+      }
+
+      .hero-kpis {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+        margin-top: 14px;
+      }
+
+      .hero-kpis div {
+        padding: 12px;
+        border-radius: 18px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(255, 255, 255, 0.06);
+      }
+
+      .hero-kpis b {
+        display: block;
+        font-size: 22px;
+      }
+
+      .hero-kpis span {
+        font-size: 11px;
+        color: var(--muted);
+      }
+
+      .section {
+        padding: 56px 0;
+      }
+
+      .metrics {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+      }
+
+      .metric {
+        border-radius: var(--radius-lg);
+        padding: 22px 20px;
+      }
+
+      .metric b {
+        display: block;
+        font-size: clamp(30px, 3vw, 42px);
+        letter-spacing: -0.06em;
+      }
+
+      .metric span {
+        display: block;
+        margin-top: 8px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .section-heading {
+        max-width: 900px;
+        margin-bottom: 28px;
+      }
+
+      .section-heading h2 {
+        font-size: clamp(28px, 4vw, 52px);
+      }
+
+      .quick-links {
+        gap: 10px;
+      }
+
+      .quick-link {
+        padding: 12px 14px;
+        border-radius: 18px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(22px) saturate(150%);
+        transition: transform 220ms ease, border-color 220ms ease;
+      }
+
+      .quick-link:hover {
+        transform: translateY(-2px);
+        border-color: rgba(124, 241, 255, 0.28);
+      }
+
+      .toolbar {
+        display: grid;
+        grid-template-columns: 1.02fr 0.98fr;
+        gap: 24px;
+        padding: 24px;
+        border-radius: var(--radius-lg);
+      }
+
+      .toolbar-copy h2 {
+        font-size: clamp(28px, 4vw, 50px);
+      }
+
+      .toolbar-actions {
+        display: grid;
+        gap: 14px;
+        align-content: start;
+      }
+
+      .search-box {
+        display: grid;
+        gap: 10px;
+      }
+
+      .search-box span,
+      .filter-label {
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 700;
+      }
+
+      .search-box input {
+        width: 100%;
+        min-height: 48px;
+        padding: 0 16px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.08);
+        color: var(--text);
+        outline: none;
+      }
+
+      .search-box input::placeholder {
+        color: #91a0b6;
+      }
+
+      .search-box input:focus {
+        border-color: rgba(124, 241, 255, 0.28);
+        box-shadow: 0 0 0 4px rgba(124, 241, 255, 0.08);
+      }
+
+      .filter-group {
+        display: grid;
+        gap: 8px;
+      }
+
+      .filter-chip {
+        padding: 10px 12px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.06);
+        color: var(--muted);
+        font-size: 12px;
+        cursor: pointer;
+        transition: transform 220ms ease, background 220ms ease, color 220ms ease;
+      }
+
+      .filter-chip.active {
+        background: linear-gradient(135deg, var(--cyan), var(--amber));
+        color: #08111e;
+      }
+
+      .card-grid {
+        display: grid;
+        gap: 18px;
+      }
+
+      .drink-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .support-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      details.card {
+        border-radius: var(--radius-lg);
+        transition: transform 220ms ease;
+      }
+
+      details.card:hover {
+        transform: translateY(-2px);
+      }
+
+      .card summary {
+        display: flex;
+        align-items: start;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 20px 22px;
+        list-style: none;
+        cursor: pointer;
+      }
+
+      .card summary::-webkit-details-marker {
+        display: none;
+      }
+
+      .card summary::after {
+        content: "+";
+        font-size: 24px;
+        line-height: 1;
+        color: var(--muted);
+        transition: transform 220ms ease;
+      }
+
+      .card[open] summary::after {
+        transform: rotate(45deg);
+      }
+
+      .card-version,
+      .tag {
+        display: inline-flex;
+        align-items: center;
+        width: fit-content;
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.08);
+        color: var(--muted);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .card strong {
+        display: block;
+        margin-top: 10px;
+        font-size: clamp(20px, 2.2vw, 28px);
+        letter-spacing: -0.04em;
+      }
+
+      .card small {
+        display: block;
+        margin-top: 8px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .card-body {
+        padding: 0 22px 20px;
+        border-top: 1px solid var(--line);
+      }
+
+      .tag-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 16px;
+      }
+
+      .card-body p:first-child,
+      .card-body ol:first-child,
+      .card-body ul:first-child,
+      .recipe-block:first-child {
+        margin-top: 16px;
+      }
+
+      .card-body ol,
+      .card-body ul {
+        margin-bottom: 0;
+        padding-left: 20px;
+      }
+
+      .recipe-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 280px;
+        gap: 22px;
+        align-items: start;
+      }
+
+      .recipe-images {
+        display: grid;
+        gap: 18px;
+        position: sticky;
+        top: 88px;
+        padding-top: 28px;
+      }
+
+      .recipe-block + .recipe-block {
+        margin-top: 18px;
+      }
+
+      .recipe-block h4 {
+        margin: 0 0 10px;
+        font-size: 16px;
+        letter-spacing: -0.02em;
+      }
+
+      .image-card {
+        margin: 0;
+        padding: 12px;
+        border-radius: 18px;
+      }
+
+      .image-card.twenty {
+        transform: translateY(108px);
+      }
+
+      .image-card figcaption {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 10px;
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .image-link {
+        display: block;
+        border-radius: 14px;
+        overflow: hidden;
+        cursor: zoom-in;
+        background: linear-gradient(160deg, rgba(233, 241, 252, 0.96), rgba(193, 211, 231, 0.94));
+        box-shadow: var(--shadow-soft);
+      }
+
+      .image-link img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+
+      .note {
+        margin-top: 18px;
+        padding: 14px 16px;
+        border-radius: 16px;
+        background: linear-gradient(145deg, rgba(17, 24, 39, 0.95), rgba(39, 57, 83, 0.95));
+        color: rgba(255, 255, 255, 0.9);
+        line-height: 1.65;
+      }
+
+      .hidden {
+        display: none !important;
+      }
+
+      [data-reveal] {
+        opacity: 0;
+        transform: translateY(24px) scale(0.985);
+        filter: blur(16px);
+        transition: opacity 820ms var(--ease), transform 920ms var(--ease), filter 920ms var(--ease);
+        transition-delay: var(--reveal-delay, 0ms);
+      }
+
+      [data-reveal].visible {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+      }
+
+      .lightbox {
+        position: fixed;
+        inset: 0;
+        z-index: 120;
+        display: grid;
+        place-items: center;
+        padding: 18px;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: opacity 320ms var(--ease), visibility 320ms var(--ease);
+      }
+
+      .lightbox.active {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+      }
+
+      .lightbox-backdrop {
+        position: absolute;
+        inset: 0;
+        background: rgba(4, 8, 15, 0.78);
+        backdrop-filter: blur(18px) saturate(128%);
+      }
+
+      .lightbox-dialog {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        gap: 12px;
+        width: min(1100px, calc(100vw - 24px));
+        max-height: calc(100vh - 24px);
+        padding: 18px;
+        border-radius: 26px;
+      }
+
+      .lightbox-close {
+        position: absolute;
+        top: 14px;
+        right: 14px;
+        width: 38px;
+        height: 38px;
+        border: 0;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--text);
+        font-size: 20px;
+        cursor: pointer;
+      }
+
+      .lightbox-caption {
+        margin: 0;
+        padding-right: 44px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .lightbox-stage {
+        overflow: auto;
+        border-radius: 20px;
+        background:
+          radial-gradient(circle at 18% 18%, rgba(124, 241, 255, 0.18), transparent 26%),
+          radial-gradient(circle at 82% 78%, rgba(183, 255, 126, 0.14), transparent 24%),
+          linear-gradient(160deg, rgba(233, 241, 252, 0.96), rgba(196, 214, 233, 0.94));
+        padding: 18px;
+      }
+
+      .lightbox-stage img {
+        display: block;
+        width: min(100%, 960px);
+        height: auto;
+        margin: 0 auto;
+        border-radius: 18px;
+        box-shadow: 0 20px 42px rgba(2, 8, 16, 0.22);
+      }
+
+      body.lightbox-open {
+        overflow: hidden;
+      }
+
+      @keyframes float {
+        0%, 100% { transform: translate3d(-50%, 0, 0); }
+        50% { transform: translate3d(-50%, -8px, 0); }
+      }
+
+      .pill-a,
+      .pill-b {
+        transform: none;
+      }
+
+      @media (max-width: 1120px) {
+        .hero,
+        .toolbar,
+        .drink-grid,
+        .support-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .hero {
+          min-height: auto;
+        }
+
+        .recipe-layout {
+          grid-template-columns: 1fr;
+        }
+
+        .recipe-images {
+          position: relative;
+          top: auto;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          padding-top: 0;
+        }
+
+        .image-card.twenty {
+          transform: none;
+        }
+      }
+
+      @media (max-width: 780px) {
+        .topbar {
+          flex-direction: column;
+          align-items: start;
+        }
+
+        .shell {
+          width: min(100% - 24px, var(--content-width));
+        }
+
+        .metrics {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .hero-panel {
+          min-height: 480px;
+        }
+
+        .wordmark {
+          inset: 18px;
+          min-height: 408px;
+        }
+
+        .wordmark-shell {
+          min-height: 350px;
+        }
+
+        .wordmark-title {
+          font-size: clamp(42px, 12vw, 72px);
+        }
+
+        .recipe-images {
+          grid-template-columns: 1fr;
+        }
+
+        .lightbox {
+          padding: 12px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+
+        *,
+        *::before,
+        *::after {
+          animation: none !important;
+          transition: none !important;
+        }
+
+        [data-reveal] {
+          opacity: 1;
+          transform: none;
+          filter: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topbar" id="topbar">
+      <div>
+        <div class="brand">Luckin Recipe Library</div>
+        <p class="brand-sub">4.20 + 4.27 &#26032;&#21697;&#36895;&#35760;&#25972;&#21512;&#29256;</p>
+      </div>
+      <nav class="nav">
+        <a href="#overview">&#39318;&#39029;</a>
+        <a href="#tools">&#25628;&#32034;</a>
+        <a href="#drinks">&#39278;&#21697;&#24211;</a>
+        <a href="#support">&#36741;&#21161;&#20449;&#24687;</a>
+      </nav>
+    </header>
+
+    <main class="shell">
+      <section class="hero" id="overview">
+        <div class="hero-copy" data-reveal>
+          <p class="eyebrow">&#38376;&#24215;&#22521;&#35757;&#37197;&#26041;&#24211;</p>
+          <h1>&#29790;&#24184;&#26032;&#21697;&#37197;&#26041;&#36895;&#35760;</h1>
+          <p class="hero-text">
+            &#39029;&#38754;&#25972;&#21512;&#20102; 4.20 &#19982; 4.27 &#20004;&#29256;&#26032;&#21697;&#36895;&#35760;&#20869;&#23481;&#65292;&#25353;&#38376;&#24215;&#30495;&#23454;&#20351;&#29992;&#26041;&#24335;&#37325;&#20570;&#20026;&#25628;&#32034;&#12289;&#31579;&#36873;&#12289;&#25240;&#21472;&#12289;&#25918;&#22823;&#26597;&#30475;&#21644;&#31227;&#21160;&#31471;&#21487;&#35835;&#30340;&#35757;&#32451;&#31449;&#28857;&#12290;
+            &#21592;&#24037;&#21487;&#20197;&#30452;&#25509;&#25353;&#39278;&#21697;&#21517;&#12289;&#26479;&#22411;&#12289;&#21407;&#26009;&#25110;&#20851;&#38190;&#35789;&#24555;&#36895;&#23450;&#20301;&#21040;&#23545;&#24212;&#37197;&#26041;&#12290;
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#tools">&#24320;&#22987;&#25628;&#32034;</a>
+            <a class="button button-secondary" href="#drinks">&#30452;&#36798;&#39278;&#21697;&#37197;&#26041;</a>
+          </div>
+        </div>
+
+        <div class="hero-panel glass" data-reveal>
+          <div class="hero-stage">
+            <div class="wordmark glass">
+              <div class="wordmark-shell">
+                <span class="wordmark-label">Signature Glass Edition</span>
+                <div class="wordmark-title">
+                  <span>Lucking</span>
+                  <span>Coffe</span>
+                </div>
+                <p class="wordmark-meta">Recipe Library &#183; 4.20 + 4.27</p>
+              </div>
+              <div class="floating-pill pill-a">Glass Surface</div>
+              <div class="floating-pill pill-b">Search Ready</div>
+              <div class="floating-pill pill-c">U / 20oz</div>
+            </div>
+            <div class="hero-grid">
+              <div class="hero-info glass">
+                <span class="card-version">&#29256;&#26412;&#25972;&#21512;</span>
+                <strong>&#20004;&#29256;&#36895;&#35760;&#65292;&#19968;&#31449;&#26597;&#23436;</strong>
+                <p>&#22238;&#24402;&#39278;&#21697;&#12289;&#26032;&#39278;&#21697;&#12289;&#21407;&#26009;&#26356;&#26032;&#12289;&#36873;&#39033;&#26356;&#26032;&#12289;&#33590;&#27748;&#12289;&#22120;&#20855;&#21253;&#26448;&#32479;&#19968;&#25910;&#32435;&#12290;</p>
+                <div class="hero-kpis">
+                  <div><b>6</b><span>&#39278;&#21697;&#37197;&#26041;</span></div>
+                  <div><b>10</b><span>&#36741;&#21161;&#20449;&#24687;</span></div>
+                  <div><b>4</b><span>&#37197;&#26041;&#24037;&#21333;&#22270;</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="metrics">
+          <div class="metric glass" data-reveal><b>2</b><span>&#36895;&#35760;&#29256;&#26412;</span></div>
+          <div class="metric glass" data-reveal><b>6</b><span>&#39278;&#21697;&#37197;&#26041;</span></div>
+          <div class="metric glass" data-reveal><b>10</b><span>&#36741;&#21161;&#20449;&#24687;&#21345;</span></div>
+          <div class="metric glass" data-reveal><b>1</b><span>&#23433;&#21331; / &#33529;&#26524;&#20849;&#29992;&#20837;&#21475;</span></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-heading" data-reveal>
+          <p class="eyebrow">&#24555;&#36895;&#36339;&#36716;</p>
+          <h2>&#20808;&#30475;&#39278;&#21697;&#21517;&#65292;&#20877;&#30452;&#25509;&#36827;&#20837;&#23545;&#24212;&#37197;&#26041;&#12290;</h2>
+        </div>
+        <div class="quick-links" data-reveal>
+          <a class="quick-link glass" href="#recipe-yangmei">&#20912;&#38215;&#26472;&#26757;&#29790;&#32435;&#20912;</a>
+          <a class="quick-link glass" href="#recipe-meteor">&#38504;&#30707;&#25343;&#38081;</a>
+          <a class="quick-link glass" href="#recipe-light-lemon">&#36731;&#21654;&#26592;&#27308;&#33590;</a>
+          <a class="quick-link glass" href="#recipe-grape-lemon">&#33889;&#33796;&#26592;&#27308;&#33590;</a>
+          <a class="quick-link glass" href="#recipe-avocado">&#29275;&#27833;&#26524;&#32701;&#34915;&#37240;&#22902;&#26132;</a>
+          <a class="quick-link glass" href="#recipe-mango">&#29926;&#23572;&#30331;&#34013;&#33426;&#26524;&#37240;&#22902;&#26132;</a>
+        </div>
+      </section>
+
+      <section class="section" id="tools">
+        <div class="toolbar glass" data-reveal>
+          <div class="toolbar-copy">
+            <p class="eyebrow">&#25628;&#32034;&#24037;&#20855;</p>
+            <h2>&#25226;&#26597;&#37197;&#26041;&#36825;&#20214;&#20107;&#65292;&#20570;&#24471;&#26356;&#25509;&#36817;&#38376;&#24215;&#23454;&#25805;&#12290;</h2>
+            <p>
+              &#20808;&#36873;&#29256;&#26412;&#65292;&#20877;&#36873;&#20449;&#24687;&#31867;&#22411;&#65292;&#20877;&#36755;&#20837;&#20851;&#38190;&#35789;&#12290;&#27604;&#22914;&#21487;&#20197;&#25628;&#8220;&#26472;&#26757;&#8221;&#8220;20oz&#8221;&#8220;&#33590;&#27748;&#8221;&#8220;&#26377;&#26426;&#37240;&#22902;&#8221;&#8220;&#22120;&#20855;&#8221;&#12290;
+              &#25628;&#32034;&#21629;&#20013;&#21518;&#20250;&#33258;&#21160;&#39640;&#20142;&#24182;&#23637;&#24320;&#23545;&#24212;&#21345;&#29255;&#12290;
+            </p>
+          </div>
+
+          <div class="toolbar-actions">
+            <label class="search-box">
+              <span>&#20851;&#38190;&#35789;&#25628;&#32034;</span>
+              <input
+                id="searchInput"
+                type="search"
+                placeholder="&#36755;&#20837;&#39278;&#21697;&#21517;&#12289;&#26479;&#22411;&#12289;&#21407;&#26009;&#25110;&#27493;&#39588;&#65292;&#20363;&#22914;&#65306;&#26472;&#26757; / 20oz / &#33590;&#27748; / &#26377;&#26426;&#37240;&#22902;"
+                autocomplete="off"
+              />
+            </label>
+
+            <div class="filter-group">
+              <span class="filter-label">&#29256;&#26412;&#31579;&#36873;</span>
+              <div class="filter-row">
+                <button class="filter-chip active" data-group="version" data-value="all" type="button">&#20840;&#37096;</button>
+                <button class="filter-chip" data-group="version" data-value="4.20" type="button">4.20</button>
+                <button class="filter-chip" data-group="version" data-value="4.27" type="button">4.27</button>
+              </div>
+            </div>
+
+            <div class="filter-group">
+              <span class="filter-label">&#31867;&#22411;&#31579;&#36873;</span>
+              <div class="filter-row">
+                <button class="filter-chip active" data-group="type" data-value="all" type="button">&#20840;&#37096;</button>
+                <button class="filter-chip" data-group="type" data-value="drink" type="button">&#39278;&#21697;&#37197;&#26041;</button>
+                <button class="filter-chip" data-group="type" data-value="ingredient" type="button">&#21407;&#26009;</button>
+                <button class="filter-chip" data-group="type" data-value="option" type="button">&#36873;&#39033;&#26356;&#26032;</button>
+                <button class="filter-chip" data-group="type" data-value="tea" type="button">&#33590;&#27748;</button>
+                <button class="filter-chip" data-group="type" data-value="tool" type="button">&#22120;&#20855;&#21253;&#26448;</button>
+              </div>
+            </div>
+
+            <div class="filter-row">
+              <button class="button button-secondary" id="expandBtn" type="button">&#20840;&#37096;&#23637;&#24320;</button>
+              <button class="button button-secondary" id="collapseBtn" type="button">&#20840;&#37096;&#25240;&#21472;</button>
+              <button class="button button-secondary" id="resetBtn" type="button">&#37325;&#32622;&#31579;&#36873;</button>
+            </div>
+
+            <p
+              class="search-summary"
+              id="searchSummary"
+              data-default="&#24403;&#21069;&#26174;&#31034;&#20840;&#37096;&#20869;&#23481;&#12290;"
+              data-empty="&#24403;&#21069;&#31579;&#36873;&#26465;&#20214;&#19979;&#27809;&#26377;&#25214;&#21040;&#21305;&#37197;&#20869;&#23481;&#12290;"
+              data-result-template="&#24050;&#26174;&#31034; {visible} &#20010;&#27169;&#22359;&#65292;&#20854;&#20013;&#21253;&#21547; {drinks} &#20010;&#39278;&#21697;&#37197;&#26041;&#12290;"
+            >
+              &#24403;&#21069;&#26174;&#31034;&#20840;&#37096;&#20869;&#23481;&#12290;
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="drinks">
+        <div class="section-heading" data-reveal>
+          <p class="eyebrow">&#39278;&#21697;&#37197;&#26041;&#24211;</p>
+          <h2>&#27599;&#24352;&#21345;&#29255;&#23545;&#24212;&#19968;&#27454;&#39278;&#21697;&#65292;&#23637;&#24320;&#23601;&#26159;&#23436;&#25972;&#20570;&#27861;&#12290;</h2>
+        </div>
+
+        <div class="card-grid drink-grid">
+          <details class="card glass" id="recipe-yangmei" open data-searchable data-version="4.20" data-type="drink" data-name="&#20912;&#38215;&#26472;&#26757;&#29790;&#32435;&#20912; &#26472;&#26757; &#29790;&#32435;&#20912; &#22238;&#24402; 4.20" data-reveal>
+            <summary>
+              <div>
+                <span class="card-version">4.20 &#22238;&#24402;</span>
+                <strong>&#20912;&#38215;&#26472;&#26757;&#29790;&#32435;&#20912;</strong>
+                <small>&#26472;&#26757;&#27877;&#28385;&#26479;&#25910;&#23614;&#65292;&#20912;&#27801;&#27969;&#31243;&#39278;&#21697;</small>
+              </div>
+            </summary>
+            <div class="card-body searchable-text">
+              <div class="tag-row">
+                <span class="tag">&#22238;&#24402;&#39278;&#21697;</span>
+                <span class="tag">&#26472;&#26757;&#27877;</span>
+                <span class="tag">&#29790;&#32435;&#20912;</span>
+              </div>
+              <ol>
+                <li>&#26472;&#26757;&#19979;&#32447;&#12290;</li>
+                <li>&#30452;&#39278;&#27700;&#19978;&#32447;&#12290;</li>
+                <li>&#25605;&#25292;&#12290;</li>
+                <li>&#20837;&#20912;&#27801;&#25605;&#25292;&#26479;&#65292;&#25353; 4/D&#12290;</li>
+                <li>&#21152;&#20837; 16oz &#19968;&#24179;&#38130;&#20912;&#22359;&#12290;</li>
+                <li>&#25605;&#25292;&#21518;&#20837;&#26479;&#12290;</li>
+                <li>&#26472;&#26757;&#27877;&#28385;&#26479;&#25910;&#23614;&#12290;</li>
+              </ol>
+            </div>
+          </details>
+
+          <details class="card glass" id="recipe-meteor" open data-searchable data-version="4.20" data-type="drink" data-name="&#38504;&#30707;&#25343;&#38081; &#40657;&#31958; &#26230;&#29699; &#22238;&#24402; 4.20" data-reveal>
+            <summary>
+              <div>
+                <span class="card-version">4.20 &#22238;&#24402;</span>
+                <strong>&#38504;&#30707;&#25343;&#38081;</strong>
+                <small>&#40657;&#31958;&#12289;&#40657;&#31958;&#26230;&#29699;&#12289;&#29275;&#22902;&#19982;&#21654;&#21857;&#32452;&#21512;</small>
+              </div>
+            </summary>
+            <div class="card-body searchable-text">
+              <div class="tag-row">
+                <span class="tag">&#22238;&#24402;&#39278;&#21697;</span>
+                <span class="tag">&#21654;&#21857;</span>
+                <span class="tag">&#40657;&#31958;&#26230;&#29699;</span>
+              </div>
+              <ol>
+                <li>&#21152;&#20837;&#40657;&#31958;&#12290;</li>
+                <li>&#21152;&#20837; 2 &#24179;&#21242;&#40657;&#31958;&#26230;&#29699;&#12290;</li>
+                <li>&#29275;&#22902;&#19978;&#32447;&#12290;</li>
+                <li>&#25605;&#25292;&#12290;</li>
+                <li>&#21152;&#20837;&#20912;&#22359;&#12290;</li>
+                <li>&#21152;&#20837;&#21654;&#21857;&#12290;</li>
+                <li>&#40657;&#31958;&#28107;&#37233;&#25910;&#23614;&#12290;</li>
+              </ol>
+            </div>
+          </details>
+
+          <details class="card glass" id="recipe-light-lemon" open data-searchable data-version="4.20" data-type="drink" data-name="&#36731;&#21654;&#26592;&#27308;&#33590; &#26592;&#27308;&#33590; &#38738;&#38706;&#33590;&#27748; &#36731;&#21654; 4.20" data-reveal>
+            <summary>
+              <div>
+                <span class="card-version">4.20 &#22238;&#24402;</span>
+                <strong>&#36731;&#21654;&#26592;&#27308;&#33590;</strong>
+                <small>&#38738;&#38706;&#33590;&#27748;&#22522;&#24213;&#65292;&#21487;&#36873;&#36731;&#21654;</small>
+              </div>
+            </summary>
+            <div class="card-body searchable-text">
+              <div class="tag-row">
+                <span class="tag">&#22238;&#24402;&#39278;&#21697;</span>
+                <span class="tag">&#33590;&#39278;</span>
+                <span class="tag">&#38738;&#38706;&#33590;&#27748;</span>
+                <span class="tag">&#36731;&#21654;&#21487;&#36873;</span>
+              </div>
+              <ol>
+                <li>&#31958;&#12290;</li>
+                <li>&#26592;&#27308;&#26524;&#31890; 1 &#24179;&#21242;&#12290;</li>
+                <li>25ml &#26592;&#27308;&#27713;&#12290;</li>
+                <li>&#38738;&#38706;&#33590;&#27748;&#33267;&#20013;&#32447;&#12290;</li>
+                <li>&#30452;&#39278;&#27700;&#19978;&#32447;&#65307;&#23569;&#20912;&#26102;&#25913;&#20026;&#30452;&#39278;&#27700; 150ml&#12290;</li>
+                <li>&#33509;&#21547;&#36731;&#21654;&#65292;&#27492;&#27493;&#21152;&#20837; 50ml &#36731;&#21654;&#12290;</li>
+                <li>&#25605;&#25292;&#12290;</li>
+                <li>&#21152;&#20837;&#20912;&#22359;&#12290;</li>
+              </ol>
+            </div>
+          </details>
+
+          <details class="card glass" id="recipe-grape-lemon" open data-searchable data-version="4.20" data-type="drink" data-name="&#33889;&#33796;&#26592;&#27308;&#33590; &#33889;&#33796; &#26592;&#27308;&#33590; &#36731;&#21654; 4.20" data-reveal>
+            <summary>
+              <div>
+                <span class="card-version">4.20 &#26032;&#21697;</span>
+                <strong>&#33889;&#33796;&#26592;&#27308;&#33590;</strong>
+                <small>&#33889;&#33796;&#26524;&#31890;&#12289;&#33889;&#33796;&#27713;&#19982;&#26592;&#27308;&#33590;&#24213;&#32452;&#21512;</small>
+              </div>
+            </summary>
+            <div class="card-body searchable-text">
+              <div class="tag-row">
+                <span class="tag">&#26032;&#39278;&#21697;</span>
+                <span class="tag">&#33590;&#39278;</span>
+                <span class="tag">&#33889;&#33796;&#26524;&#31890;</span>
+                <span class="tag">&#36731;&#21654;&#21487;&#36873;</span>
+              </div>
+              <ol>
+                <li>&#31958;&#12290;</li>
+                <li>&#26592;&#27308;&#26524;&#31890; 1 &#24179;&#21242;&#12290;</li>
+                <li>&#33889;&#33796;&#26524;&#31890; 1 &#24179;&#21242;&#12290;</li>
+                <li>25ml &#26592;&#27308;&#27713;&#12290;</li>
+                <li>&#38738;&#38706;&#33590;&#27748;&#33267;&#20013;&#32447;&#12290;</li>
+                <li>&#30452;&#39278;&#27700;&#19978;&#32447;&#65307;&#23569;&#20912;&#26102;&#25913;&#20026;&#30452;&#39278;&#27700; 150ml&#12290;</li>
+                <li>&#33509;&#21547;&#36731;&#21654;&#65292;&#27492;&#27493;&#21152;&#20837; 50ml &#36731;&#21654;&#12290;</li>
+                <li>&#21152;&#20837;&#33889;&#33796;&#27713; 50ml&#12290;</li>
+                <li>&#25605;&#25292;&#12290;</li>
+                <li>&#21152;&#20837;&#20912;&#22359;&#12290;</li>
+              </ol>
+            </div>
+          </details>
+
+          <details class="card glass" id="recipe-avocado" open data-searchable data-version="4.27" data-type="drink" data-name="&#29275;&#27833;&#26524;&#32701;&#34915;&#37240;&#22902;&#26132; U&#26479; 20oz &#29275;&#27833;&#26524; &#32701;&#34915;&#29976;&#34013; &#37240;&#22902;&#26132; 4.27" data-reveal>
+            <summary>
+              <div>
+                <span class="card-version">4.27 &#26032;&#21697;</span>
+                <strong>&#29275;&#27833;&#26524;&#32701;&#34915;&#37240;&#22902;&#26132;</strong>
+                <small>U &#26479;&#19982; 20oz &#21452;&#26479;&#22411;&#37197;&#26041;</small>
+              </div>
+            </summary>
+            <div class="card-body searchable-text">
+              <div class="recipe-layout">
+                <div>
+                  <div class="tag-row">
+                    <span class="tag">&#26032;&#39278;&#21697;</span>
+                    <span class="tag">&#37240;&#22902;&#26132;</span>
+                    <span class="tag">U &#26479;</span>
+                    <span class="tag">20oz</span>
+                  </div>
+
+                  <section class="recipe-block">
+                    <h4>U &#26479;</h4>
+                    <ol>
+                      <li>&#26377;&#26426;&#37240;&#22902;&#33267; 50ml &#21051;&#24230;&#32447;&#12290;</li>
+                      <li>&#19997;&#32466;&#33267; 100ml &#21051;&#24230;&#32447;&#12290;</li>
+                      <li>&#32701;&#34915;&#29976;&#34013;&#33267; 150ml &#21051;&#24230;&#32447;&#12290;</li>
+                      <li>&#25605;&#25292;&#21518;&#20837;&#20912;&#27801;&#25605;&#25292;&#26479;&#12290;</li>
+                      <li>&#29275;&#27833;&#26524; 1 &#21242;&#12290;</li>
+                      <li>&#21152; 12oz &#19968;&#24179;&#38130;&#20912;&#22359;&#21518;&#25353; 4/D &#38190;&#12290;</li>
+                      <li>&#26479;&#20013;&#21152;&#20837;&#29141;&#40614;&#29190;&#29190;&#29664; 1 &#21242;&#38138;&#24213;&#12290;</li>
+                      <li>&#20912;&#27801;&#20837;&#26479;&#12290;</li>
+                      <li>&#26377;&#26426;&#37240;&#22902;&#38138;&#39030;&#12290;</li>
+                    </ol>
+                  </section>
+
+                  <section class="recipe-block">
+                    <h4>20oz &#26479;</h4>
+                    <ol>
+                      <li>&#26377;&#26426;&#37240;&#22902;&#33267; 100ml &#21051;&#24230;&#32447;&#12290;</li>
+                      <li>&#19997;&#32466;&#33267; 70ml&#12290;</li>
+                      <li>&#32701;&#34915;&#29976;&#34013;&#33267; 200ml &#21051;&#24230;&#32447;&#12290;</li>
+                      <li>&#25605;&#25292;&#21518;&#20837;&#20912;&#27801;&#25605;&#25292;&#26479;&#12290;</li>
+                      <li>&#29275;&#27833;&#26524; 2 &#21242;&#12290;</li>
+                      <li>&#21152; 16oz &#19968;&#24179;&#38130;&#20912;&#22359;&#21518;&#25353; 4/D &#38190;&#12290;</li>
+                      <li>&#26479;&#20013;&#21152;&#20837;&#29141;&#40614;&#29190;&#29190;&#29664; 3 &#21242;&#19982; 100ml &#26377;&#26426;&#37240;&#22902;&#38138;&#24213;&#12290;</li>
+                      <li>&#20912;&#27801;&#20837;&#26479;&#12290;</li>
+                    </ol>
+                  </section>
+                </div>
+
+                <aside class="recipe-images">
+                  <figure class="image-card glass">
+                    <figcaption><span>U &#26479;&#24037;&#21333;&#22270;</span><small>&#28857;&#20987;&#26597;&#30475;&#21407;&#22270;</small></figcaption>
+                    <a class="image-link" href="./avocado-u.svg" data-lightbox-src="./avocado-u.svg" data-lightbox-caption="&#29275;&#27833;&#26524;&#32701;&#34915;&#37240;&#22902;&#26132; U &#26479;&#24037;&#21333;&#22270;">
+                      <img src="./avocado-u.svg" alt="&#29275;&#27833;&#26524;&#32701;&#34915;&#37240;&#22902;&#26132; U &#26479;&#24037;&#21333;&#22270;" loading="lazy" />
+                    </a>
+                  </figure>
+                  <figure class="image-card glass twenty">
+                    <figcaption><span>20oz &#26479;&#24037;&#21333;&#22270;</span><small>&#28857;&#20987;&#26597;&#30475;&#21407;&#22270;</small></figcaption>
+                    <a class="image-link" href="./avocado-20.svg" data-lightbox-src="./avocado-20.svg" data-lightbox-caption="&#29275;&#27833;&#26524;&#32701;&#34915;&#37240;&#22902;&#26132; 20oz &#26479;&#24037;&#21333;&#22270;">
+                      <img src="./avocado-20.svg" alt="&#29275;&#27833;&#26524;&#32701;&#34915;&#37240;&#22902;&#26132; 20oz &#26479;&#24037;&#21333;&#22270;" loading="lazy" />
+                    </a>
+                  </figure>
+                </aside>
+              </div>
+              <section class="note">&#21516;&#31958;&#24230;&#12289;&#21516;&#26479;&#22411;&#30340;&#20004;&#26479;&#29275;&#27833;&#26524;&#32701;&#34915;&#37240;&#22902;&#26132;&#65292;&#21487;&#21516;&#26102;&#20837;&#25605;&#25292;&#26479;&#21512;&#24182;&#25605;&#25171;&#65292;&#38656;&#25353;&#20004;&#27425; 4/D &#38190;&#12290;</section>
+            </div>
+          </details>
+
+          <details class="card glass" id="recipe-mango" open data-searchable data-version="4.27" data-type="drink" data-name="&#29926;&#23572;&#30331;&#34013;&#33426;&#26524;&#37240;&#22902;&#26132; U&#26479; 20oz &#34013;&#33426;&#26524; &#37240;&#22902;&#26132; 4.27" data-reveal>
+            <summary>
+              <div>
+                <span class="card-version">4.27 &#26032;&#21697;</span>
+                <strong>&#29926;&#23572;&#30331;&#34013;&#33426;&#26524;&#37240;&#22902;&#26132;</strong>
+                <small>U &#26479;&#19982; 20oz &#21452;&#26479;&#22411;&#37197;&#26041;</small>
+              </div>
+            </summary>
+            <div class="card-body searchable-text">
+              <div class="recipe-layout">
+                <div>
+                  <div class="tag-row">
+                    <span class="tag">&#26032;&#39278;&#21697;</span>
+                    <span class="tag">&#37240;&#22902;&#26132;</span>
+                    <span class="tag">U &#26479;</span>
+                    <span class="tag">20oz</span>
+                  </div>
+
+                  <section class="recipe-block">
+                    <h4>U &#26479;</h4>
+                    <ol>
+                      <li>&#26928;&#27974;&#33267; 150ml &#21051;&#24230;&#32447;&#12290;</li>
+                      <li>&#25605;&#25292;&#21518;&#20837;&#25605;&#25292;&#26479;&#12290;</li>
+                      <li>&#21152;&#20837; 1 &#21242;&#34013;&#19997;&#32466;&#12290;</li>
+                      <li>&#21152; 12oz &#19968;&#24179;&#38130;&#20912;&#22359;&#21518;&#25353; 4/D &#38190;&#12290;</li>
+                      <li>&#26479;&#20013;&#21152;&#20837;&#21407;&#21619;&#26230;&#29699; 1 &#21242;&#19982; 30ml &#33426;&#26524;&#38138;&#24213;&#12290;</li>
+                      <li>&#20912;&#27801;&#20837;&#26479;&#12290;</li>
+                      <li>&#26377;&#26426;&#37240;&#22902;&#38138;&#39030;&#12290;</li>
+                    </ol>
+                  </section>
+
+                  <section class="recipe-block">
+                    <h4>20oz &#26479;</h4>
+                    <ol>
+                      <li>&#26928;&#27974;&#33267; 150ml &#21051;&#24230;&#32447;&#12290;</li>
+                      <li>&#25605;&#25292;&#21518;&#20837;&#25605;&#25292;&#26479;&#12290;</li>
+                      <li>&#21152;&#20837; 2 &#21242;&#34013;&#19997;&#32466;&#12290;</li>
+                      <li>&#21152; 16oz &#19968;&#24179;&#38130;&#20912;&#22359;&#21518;&#25353; 4/D &#38190;&#12290;</li>
+                      <li>&#26479;&#20013;&#21152;&#20837;&#21407;&#21619;&#26230;&#29699; 1 &#21242;&#12290;</li>
+                      <li>&#26377;&#26426;&#37240;&#22902;&#33267; 100ml &#21051;&#24230;&#32447;&#12290;</li>
+                      <li>&#33426;&#26524;&#33267; 200 &#21051;&#24230;&#32447;&#38138;&#24213;&#12290;</li>
+                      <li>&#20912;&#27801;&#20837;&#26479;&#12290;</li>
+                    </ol>
+                  </section>
+                </div>
+
+                <aside class="recipe-images">
+                  <figure class="image-card glass">
+                    <figcaption><span>U &#26479;&#24037;&#21333;&#22270;</span><small>&#28857;&#20987;&#26597;&#30475;&#21407;&#22270;</small></figcaption>
+                    <a class="image-link" href="./mango-u.svg" data-lightbox-src="./mango-u.svg" data-lightbox-caption="&#29926;&#23572;&#30331;&#34013;&#33426;&#26524;&#37240;&#22902;&#26132; U &#26479;&#24037;&#21333;&#22270;">
+                      <img src="./mango-u.svg" alt="&#29926;&#23572;&#30331;&#34013;&#33426;&#26524;&#37240;&#22902;&#26132; U &#26479;&#24037;&#21333;&#22270;" loading="lazy" />
+                    </a>
+                  </figure>
+                  <figure class="image-card glass twenty">
+                    <figcaption><span>20oz &#26479;&#24037;&#21333;&#22270;</span><small>&#28857;&#20987;&#26597;&#30475;&#21407;&#22270;</small></figcaption>
+                    <a class="image-link" href="./mango-20.svg" data-lightbox-src="./mango-20.svg" data-lightbox-caption="&#29926;&#23572;&#30331;&#34013;&#33426;&#26524;&#37240;&#22902;&#26132; 20oz &#26479;&#24037;&#21333;&#22270;">
+                      <img src="./mango-20.svg" alt="&#29926;&#23572;&#30331;&#34013;&#33426;&#26524;&#37240;&#22902;&#26132; 20oz &#26479;&#24037;&#21333;&#22270;" loading="lazy" />
+                    </a>
+                  </figure>
+                </aside>
+              </div>
+              <section class="note">&#21516;&#31958;&#24230;&#12289;&#21516;&#26479;&#22411;&#30340;&#20004;&#26479;&#29926;&#23572;&#30331;&#34013;&#33426;&#26524;&#37240;&#22902;&#26132;&#65292;&#21487;&#21516;&#26102;&#20837;&#25605;&#25292;&#26479;&#21512;&#24182;&#25605;&#25171;&#65292;&#38656;&#25353;&#20004;&#27425; 4/D &#38190;&#12290;</section>
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <section class="section" id="support">
+        <div class="section-heading" data-reveal>
+          <p class="eyebrow">&#36741;&#21161;&#20449;&#24687;&#24211;</p>
+          <h2>&#21407;&#26009;&#12289;&#36873;&#39033;&#26356;&#26032;&#12289;&#33590;&#27748;&#12289;&#22120;&#20855;&#21253;&#26448;&#65292;&#32479;&#19968;&#25910;&#32435;&#12290;</h2>
+        </div>
+
+        <div class="card-grid support-grid">
+          <details class="card glass" open data-searchable data-version="4.20" data-type="ingredient" data-name="&#36895;&#20923;&#26472;&#26757;&#27877; 4.20 &#21407;&#26009;" data-reveal>
+            <summary><div><span class="card-version">4.20 &#21407;&#26009;</span><strong>&#36895;&#20923;&#26472;&#26757;&#27877;</strong><small>&#26032;&#22686;&#21407;&#26009;</small></div></summary>
+            <div class="card-body searchable-text"><p>4.20 &#29256;&#26032;&#22686;&#21407;&#26009;&#65306;&#36895;&#20923;&#26472;&#26757;&#27877;&#12290;</p></div>
+          </details>
+
+          <details class="card glass" open data-searchable data-version="4.20" data-type="option" data-name="&#33510;&#29916;&#26524;&#34092;&#33590; &#30333;&#35199;&#26586; &#36873;&#39033;&#26356;&#26032; 4.20" data-reveal>
+            <summary><div><span class="card-version">4.20 &#36873;&#39033;&#26356;&#26032;</span><strong>&#33510;&#29916;&#26524;&#34092;&#33590;</strong><small>&#26032;&#22686;&#21547;&#30333;&#35199;&#26586; / &#19981;&#21547;&#30333;&#35199;&#26586;</small></div></summary>
+            <div class="card-body searchable-text"><p>&#33510;&#29916;&#26524;&#34092;&#33590;&#26032;&#22686;&#21547;&#30333;&#35199;&#26586;&#19982;&#19981;&#21547;&#30333;&#35199;&#26586;&#36873;&#39033;&#65292;&#26631;&#31614;&#36923;&#36753;&#19982;&#26472;&#26525;&#29976;&#38706;&#19968;&#33268;&#12290;</p></div>
+          </details>
+
+          <details class="card glass" open data-searchable data-version="4.20" data-type="option" data-name="&#33889;&#33796;&#31995;&#21015; &#21152;&#20493; &#36873;&#39033;&#26356;&#26032; 4.20" data-reveal>
+            <summary><div><span class="card-version">4.20 &#36873;&#39033;&#26356;&#26032;</span><strong>&#33889;&#33796;&#31995;&#21015;&#20135;&#21697;</strong><small>&#26032;&#22686;&#21152;&#20493;&#36873;&#39033;</small></div></summary>
+            <div class="card-body searchable-text"><p>&#33889;&#33796;&#31995;&#21015;&#26032;&#22686;&#8220;&#21152;&#20493;&#8221;&#36873;&#39033;&#65292;&#21152;&#20493;&#21363;&#22810;&#21152;&#19968;&#21242;&#33889;&#33796;&#26524;&#31890;&#65292;&#20854;&#20313;&#19981;&#21464;&#12290;</p></div>
+          </details>
+
+          <details class="card glass" open data-searchable data-version="4.20" data-type="tea" data-name="&#38738;&#38706;&#33590;&#27748; &#39044;&#21046; 8&#20998;&#38047; 4.20" data-reveal>
+            <summary><div><span class="card-version">4.20 &#33590;&#27748;</span><strong>&#38738;&#38706;&#33590;&#27748;</strong><small>&#26032;&#22686;&#39044;&#21046;&#33590;&#27748;</small></div></summary>
+            <div class="card-body searchable-text"><p>&#38738;&#38706;&#33590;&#27748;&#65292;&#39044;&#21046;&#26102;&#38271; 8 &#20998;&#38047;&#12290;</p></div>
+          </details>
+
+          <details class="card glass" open data-searchable data-version="4.27" data-type="ingredient" data-name="&#26377;&#26426;&#37240;&#22902; 4.27 &#21407;&#26009;" data-reveal>
+            <summary><div><span class="card-version">4.27 &#21407;&#26009;</span><strong>&#26377;&#26426;&#37240;&#22902;</strong><small>&#20919;&#34255;&#20648;&#23384;&#65292;&#24320;&#23553;&#20445;&#36136;&#26399;&#20004;&#22825;</small></div></summary>
+            <div class="card-body searchable-text"><p>&#26377;&#26426;&#37240;&#22902;&#38656;&#20919;&#34255;&#20648;&#23384;&#65292;&#24320;&#23553;&#21518;&#20445;&#36136;&#26399;&#20004;&#22825;&#12290;</p></div>
+          </details>
+
+          <details class="card glass" open data-searchable data-version="4.27" data-type="ingredient" data-name="&#29141;&#40614;&#29190;&#29190;&#29664; 4.27 &#21407;&#26009;" data-reveal>
+            <summary><div><span class="card-version">4.27 &#21407;&#26009;</span><strong>&#29141;&#40614;&#29190;&#29190;&#29664;</strong><small>&#33829;&#19994;&#24120;&#28201;&#65292;&#38381;&#24215;&#20919;&#34255;</small></div></summary>
+            <div class="card-body searchable-text"><p>&#33829;&#19994;&#26102;&#24120;&#28201;&#23384;&#25918;&#65292;&#38381;&#24215;&#20919;&#34255;&#65292;&#24320;&#23553;&#20445;&#36136;&#26399;&#19977;&#22825;&#12290;</p></div>
+          </details>
+
+          <details class="card glass" open data-searchable data-version="4.27" data-type="ingredient" data-name="&#20919;&#20923;&#29275;&#27833;&#26524;&#27877; 4.27 &#21407;&#26009;" data-reveal>
+            <summary><div><span class="card-version">4.27 &#21407;&#26009;</span><strong>&#20919;&#20923;&#29275;&#27833;&#26524;&#27877;</strong><small>&#38656;&#35299;&#20923;&#65292;&#35299;&#20923;&#21518;&#25928;&#26399; 9 &#22825;</small></div></summary>
+            <div class="card-body searchable-text"><p>&#38656;&#35299;&#20923;&#65292;&#25187;&#30422;&#23494;&#23553;&#24182;&#20919;&#34255;&#20648;&#23384;&#65292;&#29992;&#23436;&#31435;&#21363;&#25918;&#22238;&#20919;&#34255;&#20912;&#31665;&#65307;&#35299;&#20923;&#21518;&#25928;&#26399; 9 &#22825;&#12290;</p></div>
+          </details>
+
+          <details class="card glass" open data-searchable data-version="4.27" data-type="ingredient" data-name="&#34013;&#19997;&#32466;&#25343;&#38081;&#39118;&#21619;&#22266;&#20307;&#39278;&#26009; 4.27 &#21407;&#26009;" data-reveal>
+            <summary><div><span class="card-version">4.27 &#21407;&#26009;</span><strong>&#34013;&#19997;&#32466;&#25343;&#38081;&#39118;&#21619;&#22266;&#20307;&#39278;&#26009;</strong><small>&#29926;&#23572;&#30331;&#34013;&#33426;&#26524;&#37240;&#22902;&#26132;&#26680;&#24515;&#39118;&#21619;</small></div></summary>
+            <div class="card-body searchable-text"><p>&#29992;&#20110;&#29926;&#23572;&#30331;&#34013;&#33426;&#26524;&#37240;&#22902;&#26132;&#30340;&#26680;&#24515;&#39118;&#21619;&#26500;&#25104;&#12290;</p></div>
+          </details>
+
+          <details class="card glass" open data-searchable data-version="4.27" data-type="tool" data-name="&#26032;&#22686;&#22120;&#20855; &#19981;&#38152;&#38050;&#20221;&#25968;&#30418; 304&#19981;&#38152;&#38050;&#30418; &#20912;&#28103;&#28107;&#21242; 4.27" data-reveal>
+            <summary><div><span class="card-version">4.27 &#22120;&#20855;</span><strong>&#26032;&#22686;&#22120;&#20855;</strong><small>&#21046;&#20316;&#21069;&#32479;&#19968;&#22791;&#40784;</small></div></summary>
+            <div class="card-body searchable-text">
+              <ul>
+                <li>&#19981;&#38152;&#38050;&#20221;&#25968;&#30418; 2 &#22871;</li>
+                <li>304 &#19981;&#38152;&#38050;&#30418; 2 &#20010;</li>
+                <li>&#23567;&#21495;&#20912;&#28103;&#28107;&#21242; 1 &#20010;</li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="card glass" open data-searchable data-version="4.27" data-type="tool" data-name="U&#26479; U&#26479;&#30422; &#20845;&#26684;&#26479;&#26550; &#21253;&#26448; 4.27" data-reveal>
+            <summary><div><span class="card-version">4.27 &#21253;&#26448;</span><strong>&#26032;&#22686;&#21253;&#26448; / &#26479;&#26550;</strong><small>U &#26479;&#19982;&#20845;&#26684;&#26479;&#26550;&#21516;&#27493;&#20851;&#27880;</small></div></summary>
+            <div class="card-body searchable-text">
+              <ul>
+                <li>300ml&#65306;U &#26479; + U &#26479;&#30422;</li>
+                <li>&#38376;&#24215;&#25353;&#38656;&#35746;&#20845;&#26684;&#26479;&#26550;</li>
+                <li>&#27880;&#24847;&#65306;&#20116;&#26684;&#26479;&#26550;&#19982;&#20845;&#26684;&#26479;&#26550;&#19981;&#21487;&#28151;&#25918;</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+      </section>
+    </main>
+
+    <div class="lightbox" id="lightbox" aria-hidden="true">
+      <div class="lightbox-backdrop" data-close></div>
+      <div class="lightbox-dialog glass">
+        <button class="lightbox-close" type="button" data-close aria-label="&#20851;&#38381;">&#215;</button>
+        <p class="lightbox-caption" id="lightboxCaption" data-default="&#37197;&#26041;&#21407;&#22270;">&#37197;&#26041;&#21407;&#22270;</p>
+        <div class="lightbox-stage">
+          <img id="lightboxImage" src="" alt="" />
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const state = { version: "all", type: "all", keyword: "" };
+      const searchInput = document.querySelector("#searchInput");
+      const summary = document.querySelector("#searchSummary");
+      const cards = document.querySelectorAll("[data-searchable]");
+      const bodies = document.querySelectorAll(".searchable-text");
+      const details = document.querySelectorAll("details.card");
+      const chips = document.querySelectorAll(".filter-chip");
+      const expandBtn = document.querySelector("#expandBtn");
+      const collapseBtn = document.querySelector("#collapseBtn");
+      const resetBtn = document.querySelector("#resetBtn");
+      const topbar = document.querySelector("#topbar");
+      const revealNodes = document.querySelectorAll("[data-reveal]");
+      const originals = new WeakMap();
+      const lightbox = document.querySelector("#lightbox");
+      const lightboxImg = document.querySelector("#lightboxImage");
+      const lightboxCaption = document.querySelector("#lightboxCaption");
+
+      bodies.forEach((node) => originals.set(node, node.innerHTML));
+
+      revealNodes.forEach((node, index) => {
+        node.style.setProperty("--reveal-delay", `${Math.min(index * 42, 320)}ms`);
+      });
+
+      if ("IntersectionObserver" in window) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
+        revealNodes.forEach((node) => observer.observe(node));
+      } else {
+        revealNodes.forEach((node) => node.classList.add("visible"));
+      }
+
+      function escapeRegExp(value) {
+        return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      }
+
+      function resetHighlights() {
+        bodies.forEach((node) => {
+          node.innerHTML = originals.get(node);
+        });
+      }
+
+      function highlightKeyword(keyword) {
+        if (!keyword) return;
+        const pattern = new RegExp(`(${escapeRegExp(keyword)})`, "gi");
+        bodies.forEach((node) => {
+          node.innerHTML = originals.get(node).replace(pattern, "<mark>$1</mark>");
+        });
+      }
+
+      function syncChipState() {
+        chips.forEach((chip) => {
+          chip.classList.toggle("active", state[chip.dataset.group] === chip.dataset.value);
+        });
+      }
+
+      function syncSummary(visible, drinkCount) {
+        const defaults = {
+          defaultText: summary.dataset.default || "",
+          emptyText: summary.dataset.empty || "",
+          resultTemplate: summary.dataset.resultTemplate || "{visible} / {drinks}",
+        };
+        if (!state.keyword && state.version === "all" && state.type === "all") {
+          summary.textContent = defaults.defaultText;
+          return;
+        }
+        if (!visible) {
+          summary.textContent = defaults.emptyText;
+          return;
+        }
+        summary.textContent = defaults.resultTemplate
+          .replace("{visible}", String(visible))
+          .replace("{drinks}", String(drinkCount));
+      }
+
+      function applySearch() {
+        const keyword = state.keyword.trim().toLowerCase();
+        resetHighlights();
+        let visible = 0;
+        let drinkCount = 0;
+
+        cards.forEach((card) => {
+          const versionOk = state.version === "all" || card.dataset.version === state.version;
+          const typeOk = state.type === "all" || card.dataset.type === state.type;
+          const text = `${card.dataset.name || ""} ${card.textContent}`.toLowerCase();
+          const keywordOk = !keyword || text.includes(keyword);
+          const match = versionOk && typeOk && keywordOk;
+
+          card.classList.toggle("hidden", !match);
+          if (match) {
+            visible += 1;
+            if (card.dataset.type === "drink") drinkCount += 1;
+            if (keyword && card.tagName === "DETAILS") card.open = true;
+          }
+        });
+
+        if (keyword) highlightKeyword(state.keyword.trim());
+        syncSummary(visible, drinkCount);
+      }
+
+      searchInput.addEventListener("input", () => {
+        state.keyword = searchInput.value;
+        applySearch();
+      });
+
+      chips.forEach((chip) => {
+        chip.addEventListener("click", () => {
+          state[chip.dataset.group] = chip.dataset.value;
+          syncChipState();
+          applySearch();
+        });
+      });
+
+      expandBtn.addEventListener("click", () => {
+        details.forEach((card) => {
+          if (!card.classList.contains("hidden")) card.open = true;
+        });
+      });
+
+      collapseBtn.addEventListener("click", () => {
+        details.forEach((card) => {
+          if (!card.classList.contains("hidden")) card.open = false;
+        });
+      });
+
+      resetBtn.addEventListener("click", () => {
+        state.version = "all";
+        state.type = "all";
+        state.keyword = "";
+        searchInput.value = "";
+        syncChipState();
+        applySearch();
+      });
+
+      function openLightbox(src, caption) {
+        lightboxImg.src = src;
+        lightboxCaption.textContent = caption || lightboxCaption.dataset.default || "";
+        lightbox.classList.add("active");
+        lightbox.setAttribute("aria-hidden", "false");
+        document.body.classList.add("lightbox-open");
+      }
+
+      function closeLightbox() {
+        lightbox.classList.remove("active");
+        lightbox.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("lightbox-open");
+        window.setTimeout(() => {
+          lightboxImg.src = "";
+        }, 220);
+      }
+
+      document.addEventListener("click", (event) => {
+        const trigger = event.target.closest("[data-lightbox-src]");
+        if (trigger) {
+          event.preventDefault();
+          openLightbox(trigger.dataset.lightboxSrc, trigger.dataset.lightboxCaption);
+          return;
+        }
+        if (event.target.closest("[data-close]")) {
+          closeLightbox();
+        }
+      });
+
+      window.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") closeLightbox();
+      });
+
+      window.addEventListener("scroll", () => {
+        topbar.classList.toggle("compact", window.scrollY > 20);
+      }, { passive: true });
+
+      syncChipState();
+      applySearch();
+    </script>
+  </body>
+</html>
