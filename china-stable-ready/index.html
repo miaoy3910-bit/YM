@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="format-detection" content="telephone=no, email=no, address=no" />
+    <meta
+      name="description"
+      content="瑞幸新品配方速记门店培训版，支持版本筛选、关键词搜索、配方工单图查看与打印。"
+    />
+    <title>瑞幸新品速记配方库 · 3D 视觉升级版</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand-group">
+        <div class="brand">Luckin Recipe Library</div>
+        <p class="brand-subtitle">4.20 + 4.27 新品速记整合版 · 3D UI Upgrade</p>
+      </div>
+      <nav class="nav">
+        <a href="#overview">首页</a>
+        <a href="#library-tools">检索</a>
+        <a href="#drink-library">饮品库</a>
+        <a href="#support-library">辅助信息</a>
+      </nav>
+    </header>
+
+    <main class="page-shell">
+      <section class="hero" id="overview">
+        <div class="hero-copy" data-reveal>
+          <p class="eyebrow">门店培训配方库</p>
+          <h1>瑞幸新品配方速记</h1>
+          <p class="hero-text">
+            页面同时收录 4.20 和 4.27 两版内容，并把查找方式改成更适合门店实操的检索库。
+            你能得到更强的 3D 视觉层次，同时保留版本筛选、类型筛选、关键词搜索、折叠和打印能力。
+          </p>
+          <div class="hero-actions">
+            <a href="#library-tools" class="button button-primary">开始检索</a>
+            <a href="#drink-library" class="button button-secondary">直达饮品配方</a>
+          </div>
+        </div>
+
+        <div class="hero-panel depth-stage" data-reveal data-tilt data-tilt-depth="18">
+          <div class="gradient-orb orb-blue"></div>
+          <div class="gradient-orb orb-green"></div>
+          <div class="hero-mesh hero-mesh-a"></div>
+          <div class="hero-mesh hero-mesh-b"></div>
+          <div class="hero-disc hero-disc-left"></div>
+          <div class="hero-disc hero-disc-right"></div>
+          <div class="hero-platform"></div>
+          <div class="hero-wordmark-stage glass-card" data-reveal data-tilt data-tilt-depth="42">
+            <div class="hero-wordmark-halo hero-wordmark-halo-a"></div>
+            <div class="hero-wordmark-halo hero-wordmark-halo-b"></div>
+            <div class="hero-wordmark-shell">
+              <span class="hero-wordmark-label">Signature Glass Edition</span>
+              <h2 class="hero-wordmark">
+                <span>Lucking</span>
+                <span>Coffe</span>
+              </h2>
+              <p class="hero-wordmark-meta">Recipe Library · 4.20 + 4.27</p>
+            </div>
+            <div class="hero-floating-pill hero-floating-pill-a">Glass Surface</div>
+            <div class="hero-floating-pill hero-floating-pill-b">Search Ready</div>
+            <div class="hero-floating-pill hero-floating-pill-c">U / 20oz</div>
+          </div>
+
+          <article class="hero-card hero-card-primary glass-card glass-card-large" data-tilt data-tilt-depth="28">
+            <div class="hero-card-topline">
+              <span>版本整合</span>
+              <b>门店快查</b>
+            </div>
+            <strong>4.20 + 4.27</strong>
+            <p>回归饮品、新品、原料更新、选项更新、茶汤、器具包材统一归档，减少来回翻找。</p>
+            <div class="hero-inline-metrics">
+              <div class="hero-inline-metric">
+                <em>06</em>
+                <small>饮品配方</small>
+              </div>
+              <div class="hero-inline-metric">
+                <em>10</em>
+                <small>辅助信息</small>
+              </div>
+              <div class="hero-inline-metric">
+                <em>01</em>
+                <small>统一入口</small>
+              </div>
+            </div>
+          </article>
+
+          <article class="hero-card hero-card-secondary glass-card" data-tilt data-tilt-depth="40">
+            <div class="hero-card-topline">
+              <span>快速定位</span>
+              <b>训练模式</b>
+            </div>
+            <strong>筛选 + 搜索 + 图片工单</strong>
+            <div class="hero-chip-row">
+              <span class="hero-mini-chip">版本</span>
+              <span class="hero-mini-chip">类型</span>
+              <span class="hero-mini-chip">关键词</span>
+              <span class="hero-mini-chip">U 杯 / 20oz</span>
+            </div>
+            <p>适合店员按饮品名、杯型、原料和步骤快速查找，也能直接点开工单图放大查看。</p>
+          </article>
+
+          <article class="hero-card hero-card-tertiary glass-card glass-card-highlight" data-tilt data-tilt-depth="52">
+            <div class="hero-card-topline">
+              <span>重点提醒</span>
+              <b>当班可用</b>
+            </div>
+            <strong>先看杯型，再做配方</strong>
+            <ul class="hero-note-list">
+              <li>双杯型饮品已分开展示，减少误拿杯型。</li>
+              <li>图片、步骤、搜索结果保持同一套命名。</li>
+              <li>展开卡片即可直接看到完整操作细节。</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="metrics-strip section">
+        <div class="stat-card" data-reveal data-tilt>
+          <span>2</span>
+          <p>速记版本</p>
+        </div>
+        <div class="stat-card" data-reveal data-tilt>
+          <span>6</span>
+          <p>饮品配方</p>
+        </div>
+        <div class="stat-card" data-reveal data-tilt>
+          <span>10</span>
+          <p>辅助信息块</p>
+        </div>
+        <div class="stat-card" data-reveal data-tilt>
+          <span>1</span>
+          <p>全平台公开链接</p>
+        </div>
+      </section>
+
+      <section class="quick-jump section">
+        <div class="section-heading narrow" data-reveal>
+          <p class="eyebrow">快速跳转</p>
+          <h2>先看饮品名，再直接进入对应配方。</h2>
+        </div>
+        <div class="quick-chip-list" data-reveal>
+          <a href="#recipe-yangmei" class="quick-chip" data-tilt>冰镇杨梅瑞纳冰</a>
+          <a href="#recipe-meteor" class="quick-chip" data-tilt>陨石拿铁</a>
+          <a href="#recipe-lemon-light" class="quick-chip" data-tilt>轻咖柠檬茶</a>
+          <a href="#recipe-grape-lemon" class="quick-chip" data-tilt>葡萄柠檬茶</a>
+          <a href="#recipe-avocado" class="quick-chip" data-tilt>牛油果羽衣酸奶昔</a>
+          <a href="#recipe-blue-mango" class="quick-chip" data-tilt>瓦尔登蓝芒果酸奶昔</a>
+        </div>
+      </section>
+
+      <section class="library-toolbar-section section" id="library-tools">
+        <div class="toolbar-card" data-reveal data-tilt>
+          <div class="toolbar-copy">
+            <p class="eyebrow">检索工具</p>
+            <h2>把查配方这件事，做得更接近门店真实使用方式。</h2>
+            <p>
+              先选版本，再选信息类型，再输入关键词。比如可以搜“葡萄”“20oz”“轻咖”“杨梅泥”“茶汤”“器具”。
+              搜索会自动高亮结果，并把匹配模块展开。
+            </p>
+          </div>
+
+          <div class="toolbar-actions">
+            <label class="search-box" for="searchInput">
+              <span>关键词搜索</span>
+              <input
+                id="searchInput"
+                type="search"
+                placeholder="输入饮品名、版本、杯型、原料或步骤，例如：轻咖 / 杨梅 / 20oz / 茶汤"
+                autocomplete="off"
+              />
+            </label>
+
+            <div class="filter-group">
+              <span class="filter-label">版本筛选</span>
+              <div class="filter-row">
+                <button class="filter-chip is-active" type="button" data-filter-group="version" data-filter-value="all">全部</button>
+                <button class="filter-chip" type="button" data-filter-group="version" data-filter-value="4.20">4.20</button>
+                <button class="filter-chip" type="button" data-filter-group="version" data-filter-value="4.27">4.27</button>
+              </div>
+            </div>
+
+            <div class="filter-group">
+              <span class="filter-label">类型筛选</span>
+              <div class="filter-row">
+                <button class="filter-chip is-active" type="button" data-filter-group="type" data-filter-value="all">全部</button>
+                <button class="filter-chip" type="button" data-filter-group="type" data-filter-value="drink">饮品配方</button>
+                <button class="filter-chip" type="button" data-filter-group="type" data-filter-value="ingredient">原料</button>
+                <button class="filter-chip" type="button" data-filter-group="type" data-filter-value="option">选项更新</button>
+                <button class="filter-chip" type="button" data-filter-group="type" data-filter-value="tea">茶汤</button>
+                <button class="filter-chip" type="button" data-filter-group="type" data-filter-value="tool">器具包材</button>
+              </div>
+            </div>
+
+            <div class="action-row">
+              <button id="expandAllBtn" class="button button-secondary" type="button">全部展开</button>
+              <button id="collapseAllBtn" class="button button-secondary" type="button">全部折叠</button>
+              <button id="resetFiltersBtn" class="button button-secondary" type="button">重置筛选</button>
+              <button id="printBtn" class="button button-primary" type="button">打印培训版</button>
+            </div>
+
+            <p id="searchSummary" class="search-summary">当前显示全部内容。</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="drink-library">
+        <div class="section-heading" data-reveal>
+          <p class="eyebrow">饮品配方库</p>
+          <h2>每张卡片对应一款饮品，展开就是完整做法。</h2>
+        </div>
+
+        <div class="library-grid">
+          <details class="library-card recipe-card" id="recipe-yangmei" open data-searchable data-version="4.20" data-type="drink" data-name="冰镇杨梅瑞纳冰 杨梅 瑞纳冰 回归 4.20" data-reveal data-tilt>
+            <summary>
+              <div>
+                <span class="card-version">4.20 回归</span>
+                <strong>冰镇杨梅瑞纳冰</strong>
+                <small>杨梅泥满杯收尾，冰沙流程饮品</small>
+              </div>
+            </summary>
+            <div class="card-body searchable-text">
+              <div class="tag-row">
+                <span class="info-tag">回归饮品</span>
+                <span class="info-tag">瑞纳冰</span>
+                <span class="info-tag">杨梅泥</span>
+              </div>
+              <ol>
+                <li>杨梅下线。</li>
+                <li>直饮水上线。</li>
+                <li>搅拌。</li>
+                <li>入冰沙搅拌杯按“4/D”。</li>
+                <li>加入 16oz 一平铲冰。</li>
+                <li>搅拌后入杯。</li>
+                <li>杨梅泥满杯。</li>
+              </ol>
+            </div>
+          </details>
+
+          <details class="library-card recipe-card" id="recipe-meteor" open data-searchable data-version="4.20" data-type="drink" data-name="陨石拿铁 黑糖 晶球 回归 4.20" data-reveal data-tilt>
+            <summary>
+              <div>
+                <span class="card-version">4.20 回归</span>
+                <strong>陨石拿铁</strong>
+                <small>黑糖、黑糖晶球、牛奶与咖啡组合</small>
+              </div>
+            </summary>
+            <div class="card-body searchable-text">
+              <div class="tag-row">
+                <span class="info-tag">回归饮品</span>
+                <span class="info-tag">咖啡</span>
+                <span class="info-tag">黑糖晶球</span>
+              </div>
+              <ol>
+                <li>加入黑糖。</li>
+                <li>加入 2 平勺黑糖晶球。</li>
+                <li>牛奶上线。</li>
+                <li>搅拌。</li>
+                <li>加入冰块。</li>
+                <li>加入咖啡。</li>
+                <li>黑糖淋酱收尾。</li>
+              </ol>
+            </div>
+          </details>
+
+          <details class="library-card recipe-card" id="recipe-lemon-light" open data-searchable data-version="4.20" data-type="drink" data-name="轻咖柠檬茶 柠檬茶 轻咖 青露茶汤 回归 4.20" data-reveal data-tilt>
+            <summary>
+              <div>
+                <span class="card-version">4.20 回归</span>
+                <strong>轻咖柠檬茶</strong>
+                <small>含轻咖可选，茶汤与直饮水组合型茶饮</small>
+              </div>
+            </summary>
+            <div class="card-body searchable-text">
+              <div class="tag-row">
+                <span class="info-tag">回归饮品</span>
+                <span class="info-tag">茶饮</span>
+                <span class="info-tag">青露茶汤</span>
+                <span class="info-tag">轻咖可选</span>
+              </div>
+              <ol>
+                <li>加入糖。</li>
+                <li>加入柠檬果粒 1 平勺。</li>
+                <li>加入 25ml 柠檬汁。</li>
+                <li>青露茶汤至中线。</li>
+                <li>直饮水上线；少冰时改为直饮水 150ml。</li>
+                <li>若含轻咖，则在此步骤加入 50ml 轻咖。</li>
+                <li>搅拌。</li>
+                <li>加入冰块。</li>
+              </ol>
+            </div>
+          </details>
+
+          <details class="library-card recipe-card" id="recipe-grape-lemon" open data-searchable data-version="4.20" data-type="drink" data-name="葡萄柠檬茶 葡萄 轻咖 茶饮 新品 4.20" data-reveal data-tilt>
+            <summary>
+              <div>
+                <span class="card-version">4.20 新品</span>
+                <strong>葡萄柠檬茶</strong>
+                <small>葡萄果粒、葡萄汁与柠檬茶底组合</small>
+              </div>
+            </summary>
+            <div class="card-body searchable-text">
+              <div class="tag-row">
+                <span class="info-tag">新饮品</span>
+                <span class="info-tag">茶饮</span>
+                <span class="info-tag">葡萄果粒</span>
+                <span class="info-tag">轻咖可选</span>
+              </div>
+              <ol>
+                <li>加入糖。</li>
+                <li>加入柠檬果粒 1 平勺。</li>
+                <li>加入葡萄果粒 1 平勺。</li>
+                <li>加入 25ml 柠檬汁。</li>
+                <li>青露茶汤至中线。</li>
+                <li>直饮水上线；少冰时改为直饮水 150ml。</li>
+                <li>若含轻咖，则在此步骤加入 50ml 轻咖。</li>
+                <li>加入葡萄汁 50ml。</li>
+                <li>搅拌。</li>
+                <li>加入冰块。</li>
+              </ol>
+            </div>
+          </details>
+
+          <details class="library-card recipe-card" id="recipe-avocado" open data-searchable data-version="4.27" data-type="drink" data-name="牛油果羽衣酸奶昔 U杯 20oz 牛油果 羽衣甘蓝 酸奶昔 4.27" data-reveal data-tilt>
+            <summary>
+              <div>
+                <span class="card-version">4.27 新品</span>
+                <strong>牛油果羽衣酸奶昔</strong>
+                <small>U 杯与 20oz 杯双规格配方</small>
+              </div>
+            </summary>
+            <div class="card-body searchable-text">
+              <div class="recipe-detail-layout">
+                <div class="recipe-text-column">
+                  <div class="tag-row">
+                    <span class="info-tag">新饮品</span>
+                    <span class="info-tag">酸奶昔</span>
+                    <span class="info-tag">U 杯</span>
+                    <span class="info-tag">20oz</span>
+                  </div>
+                  <section class="recipe-subsection">
+                    <h4>U 杯</h4>
+                    <ol>
+                      <li>有机酸奶至 50ml 刻度线。</li>
+                      <li>丝绒至 100ml 刻度线。</li>
+                      <li>羽衣甘蓝至 150ml 刻度线。</li>
+                      <li>搅拌后入冰沙搅拌杯。</li>
+                      <li>牛油果 1 勺。</li>
+                      <li>加 12oz 一平铲冰块后按 4/D 键。</li>
+                      <li>杯中加入燕麦爆爆珠 1 勺铺底。</li>
+                      <li>冰沙入杯。</li>
+                      <li>有机酸奶铺顶。</li>
+                    </ol>
+                  </section>
+                  <section class="recipe-subsection">
+                    <h4>20oz 杯</h4>
+                    <ol>
+                      <li>有机酸奶至 100ml 刻度线。</li>
+                      <li>丝绒至 70ml。</li>
+                      <li>羽衣甘蓝至 200ml 刻度线。</li>
+                      <li>搅拌后入冰沙搅拌杯。</li>
+                      <li>牛油果 2 勺。</li>
+                      <li>加 16oz 一平铲冰块后按 4/D 键。</li>
+                      <li>杯中加入燕麦爆爆珠 3 勺与 100ml 有机酸奶铺底。</li>
+                      <li>冰沙入杯。</li>
+                    </ol>
+                  </section>
+                </div>
+
+                <aside class="recipe-visual-column" aria-label="牛油果羽衣酸奶昔配方图">
+                  <figure class="recipe-visual-frame recipe-visual-frame-u">
+                    <figcaption>
+                      <span>U 杯工单图</span>
+                      <small>点击查看原图</small>
+                    </figcaption>
+                    <a
+                      class="recipe-image-trigger"
+                      href="./avocado-u.jpg"
+                      data-lightbox-src="./avocado-u.jpg"
+                      data-lightbox-alt="牛油果羽衣酸奶昔 U 杯工单图"
+                      data-lightbox-caption="牛油果羽衣酸奶昔 U 杯工单图"
+                    >
+                      <span class="recipe-reference-shell">
+                        <img
+                          src="./avocado-u.jpg"
+                          alt="牛油果羽衣酸奶昔 U 杯配方图"
+                          class="recipe-reference-image"
+                          loading="lazy"
+                          decoding="async"
+                        />
+                      </span>
+                    </a>
+                  </figure>
+                  <figure class="recipe-visual-frame recipe-visual-frame-20">
+                    <figcaption>
+                      <span>20oz 杯工单图</span>
+                      <small>点击查看原图</small>
+                    </figcaption>
+                    <a
+                      class="recipe-image-trigger"
+                      href="./avocado-20.jpg"
+                      data-lightbox-src="./avocado-20.jpg"
+                      data-lightbox-alt="牛油果羽衣酸奶昔 20oz 杯工单图"
+                      data-lightbox-caption="牛油果羽衣酸奶昔 20oz 杯工单图"
+                    >
+                      <span class="recipe-reference-shell">
+                        <img
+                          src="./avocado-20.jpg"
+                          alt="牛油果羽衣酸奶昔 20oz 杯配方图"
+                          class="recipe-reference-image"
+                          loading="lazy"
+                          decoding="async"
+                        />
+                      </span>
+                    </a>
+                  </figure>
+                </aside>
+              </div>
+              <section class="note-box">
+                同糖度、同杯型的两杯牛油果羽衣酸奶昔，可同时入搅拌杯合并搅打，需按两次 4/D 键。
+              </section>
+            </div>
+          </details>
+
+          <details class="library-card recipe-card" id="recipe-blue-mango" open data-searchable data-version="4.27" data-type="drink" data-name="瓦尔登蓝芒果酸奶昔 U杯 20oz 蓝芒果 酸奶昔 4.27" data-reveal data-tilt>
+            <summary>
+              <div>
+                <span class="card-version">4.27 新品</span>
+                <strong>瓦尔登蓝芒果酸奶昔</strong>
+                <small>蓝丝绒与芒果分层饮品，双杯型配方</small>
+              </div>
+            </summary>
+            <div class="card-body searchable-text">
+              <div class="recipe-detail-layout">
+                <div class="recipe-text-column">
+                  <div class="tag-row">
+                    <span class="info-tag">新饮品</span>
+                    <span class="info-tag">酸奶昔</span>
+                    <span class="info-tag">U 杯</span>
+                    <span class="info-tag">20oz</span>
+                  </div>
+                  <section class="recipe-subsection">
+                    <h4>U 杯</h4>
+                    <ol>
+                      <li>椰浆至 150ml 刻度线。</li>
+                      <li>搅拌后入搅拌杯。</li>
+                      <li>加入 1 勺蓝丝绒。</li>
+                      <li>加 12oz 一平铲冰块后按 4/D 键。</li>
+                      <li>杯中加入原味晶球 1 勺与 30ml 芒果铺底。</li>
+                      <li>冰沙入杯。</li>
+                      <li>有机酸奶铺顶。</li>
+                    </ol>
+                  </section>
+                  <section class="recipe-subsection">
+                    <h4>20oz 杯</h4>
+                    <ol>
+                      <li>椰浆至 150ml 刻度线。</li>
+                      <li>搅拌后入搅拌杯。</li>
+                      <li>加入 2 勺蓝丝绒。</li>
+                      <li>加 16oz 一平铲冰块后按 4/D 键。</li>
+                      <li>杯中加入原味晶球 1 勺。</li>
+                      <li>有机酸奶至 100ml 刻度线。</li>
+                      <li>芒果至 200 刻度线铺底。</li>
+                      <li>冰沙入杯。</li>
+                    </ol>
+                  </section>
+                </div>
+
+                <aside class="recipe-visual-column" aria-label="瓦尔登蓝芒果酸奶昔配方图">
+                  <figure class="recipe-visual-frame recipe-visual-frame-u">
+                    <figcaption>
+                      <span>U 杯工单图</span>
+                      <small>点击查看原图</small>
+                    </figcaption>
+                    <a
+                      class="recipe-image-trigger"
+                      href="./mango-u.jpg"
+                      data-lightbox-src="./mango-u.jpg"
+                      data-lightbox-alt="瓦尔登蓝芒果酸奶昔 U 杯工单图"
+                      data-lightbox-caption="瓦尔登蓝芒果酸奶昔 U 杯工单图"
+                    >
+                      <span class="recipe-reference-shell">
+                        <img
+                          src="./mango-u.jpg"
+                          alt="瓦尔登蓝芒果酸奶昔 U 杯配方图"
+                          class="recipe-reference-image"
+                          loading="lazy"
+                          decoding="async"
+                        />
+                      </span>
+                    </a>
+                  </figure>
+                  <figure class="recipe-visual-frame recipe-visual-frame-20">
+                    <figcaption>
+                      <span>20oz 杯工单图</span>
+                      <small>点击查看原图</small>
+                    </figcaption>
+                    <a
+                      class="recipe-image-trigger"
+                      href="./mango-20.jpg"
+                      data-lightbox-src="./mango-20.jpg"
+                      data-lightbox-alt="瓦尔登蓝芒果酸奶昔 20oz 杯工单图"
+                      data-lightbox-caption="瓦尔登蓝芒果酸奶昔 20oz 杯工单图"
+                    >
+                      <span class="recipe-reference-shell">
+                        <img
+                          src="./mango-20.jpg"
+                          alt="瓦尔登蓝芒果酸奶昔 20oz 杯配方图"
+                          class="recipe-reference-image"
+                          loading="lazy"
+                          decoding="async"
+                        />
+                      </span>
+                    </a>
+                  </figure>
+                </aside>
+              </div>
+              <section class="note-box">
+                同糖度、同杯型的两杯瓦尔登蓝芒果酸奶昔，可同时入搅拌杯合并搅打，需按两次 4/D 键。
+              </section>
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <section class="section" id="support-library">
+        <div class="section-heading" data-reveal>
+          <p class="eyebrow">辅助信息库</p>
+          <h2>原料、选项更新、茶汤、器具包材，统一收纳。</h2>
+        </div>
+
+        <div class="support-grid">
+          <details class="library-card support-card" open data-searchable data-version="4.20" data-type="ingredient" data-name="速冻杨梅泥 4.20 新增原料" data-reveal data-tilt>
+            <summary>
+              <div>
+                <span class="card-version">4.20 原料</span>
+                <strong>速冻杨梅泥</strong>
+                <small>新增原料</small>
+              </div>
+            </summary>
+            <div class="card-body searchable-text">
+              <p>4.20 版新增原料：速冻杨梅泥。</p>
+            </div>
+          </details>
+
+          <details class="library-card support-card" open data-searchable data-version="4.20" data-type="option" data-name="苦瓜果蔬茶 白西柚 选项更新 4.20" data-reveal data-tilt>
+            <summary>
+              <div>
+                <span class="card-version">4.20 选项更新</span>
+                <strong>苦瓜果蔬茶</strong>
+                <small>新增含白西柚 / 不含白西柚选项</small>
+              </div>
+            </summary>
+            <div class="card-body searchable-text">
+              <p>苦瓜果蔬茶新增含白西柚和不含白西柚选项，和杨枝甘露标签一样。</p>
+            </div>
+          </details>
+
+          <details class="library-card support-card" open data-searchable data-version="4.20" data-type="option" data-name="葡萄系列 加倍 选项更新 4.20" data-reveal data-tilt>
+            <summary>
+              <div>
+                <span class="card-version">4.20 选项更新</span>
+                <strong>葡萄系列产品</strong>
+                <small>新增加倍选项</small>
+              </div>
+            </summary>
+            <div class="card-body searchable-text">
+              <p>葡萄系列产品新增加倍选项；加倍即多加一勺葡萄果粒，其余不变。</p>
+            </div>
+          </details>
+
+          <details class="library-card support-card" open data-searchable data-version="4.20" data-type="tea" data-name="青露茶汤 预制茶汤 8分钟 4.20" data-reveal data-tilt>
+            <summary>
+              <div>
+                <span class="card-version">4.20 茶汤</span>
+                <strong>青露茶汤</strong>
+                <small>新增预制茶汤</small>
+              </div>
+            </summary>
+            <div class="card-body searchable-text">
+              <p>青露茶汤，预制时长 8 分钟。</p>
+            </div>
+          </details>
+
+          <details class="library-card support-card" open data-searchable data-version="4.27" data-type="ingredient" data-name="有机酸奶 4.27 原料" data-reveal data-tilt>
+            <summary>
+              <div>
+                <span class="card-version">4.27 原料</span>
+                <strong>有机酸奶</strong>
+                <small>冷藏储存，开封保质期两天</small>
+              </div>
+            </summary>
+            <div class="card-body searchable-text">
+              <p>冷藏储存，开封保质期两天。</p>
+            </div>
+          </details>
+
+          <details class="library-card support-card" open data-searchable data-version="4.27" data-type="ingredient" data-name="燕麦爆爆珠 4.27 原料" data-reveal data-tilt>
+            <summary>
+              <div>
+                <span class="card-version">4.27 原料</span>
+                <strong>燕麦爆爆珠</strong>
+                <small>营业常温，闭店冷藏</small>
+              </div>
+            </summary>
+            <div class="card-body searchable-text">
+              <p>营业常温，闭店冷藏，开封保质期三天。</p>
+            </div>
+          </details>
+
+          <details class="library-card support-card" open data-searchable data-version="4.27" data-type="ingredient" data-name="冷冻牛油果泥 4.27 原料" data-reveal data-tilt>
+            <summary>
+              <div>
+                <span class="card-version">4.27 原料</span>
+                <strong>冷冻牛油果泥</strong>
+                <small>需解冻，解冻后效期 9 天</small>
+              </div>
+            </summary>
+            <div class="card-body searchable-text">
+              <p>需解冻，扣盖密封后冷藏储存，用完立即放入冷藏冰箱。解冻后效期 9 天。</p>
+            </div>
+          </details>
+
+          <details class="library-card support-card" open data-searchable data-version="4.27" data-type="ingredient" data-name="蓝丝绒拿铁风味固体饮料 4.27 原料" data-reveal data-tilt>
+            <summary>
+              <div>
+                <span class="card-version">4.27 原料</span>
+                <strong>蓝丝绒拿铁风味固体饮料</strong>
+                <small>瓦尔登蓝芒果酸奶昔核心风味</small>
+              </div>
+            </summary>
+            <div class="card-body searchable-text">
+              <p>用于瓦尔登蓝芒果酸奶昔的核心风味构成。</p>
+            </div>
+          </details>
+
+          <details class="library-card support-card dark-support-card" open data-searchable data-version="4.27" data-type="tool" data-name="新增器具 不锈钢份数盒 304不锈钢盒 冰淇淋勺 4.27" data-reveal data-tilt>
+            <summary>
+              <div>
+                <span class="card-version">4.27 器具</span>
+                <strong>新增器具</strong>
+                <small>制作前统一备齐</small>
+              </div>
+            </summary>
+            <div class="card-body searchable-text">
+              <ul>
+                <li>不锈钢份数盒 2 套</li>
+                <li>304 不锈钢盒 2 个</li>
+                <li>小号冰淇淋勺 1 个</li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="library-card support-card" open data-searchable data-version="4.27" data-type="tool" data-name="U杯 U杯盖 六格杯架 包材 4.27" data-reveal data-tilt>
+            <summary>
+              <div>
+                <span class="card-version">4.27 包材</span>
+                <strong>新增包材 / 杯架</strong>
+                <small>U 杯与六格杯架同步关注</small>
+              </div>
+            </summary>
+            <div class="card-body searchable-text">
+              <ul>
+                <li>300ml：U 杯 + U 杯盖</li>
+                <li>门店按需订六格杯架</li>
+                <li>注意：五格杯架与六格杯架不可混放</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+      </section>
+    </main>
+
+    <div class="lightbox" id="imageLightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="配方原图查看器">
+      <button class="lightbox-backdrop" type="button" data-lightbox-close tabindex="-1" aria-hidden="true"></button>
+      <div class="lightbox-dialog">
+        <button class="lightbox-close" type="button" data-lightbox-close aria-label="关闭">×</button>
+        <p class="lightbox-caption" id="lightboxCaption">配方原图</p>
+        <div class="lightbox-stage">
+          <img id="lightboxImage" class="lightbox-image" src="" alt="" />
+        </div>
+      </div>
+    </div>
+
+    <script src="./script.js"></script>
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker.register("./service-worker.js").catch(() => {});
+        });
+      }
+    </script>
+  </body>
+</html>
