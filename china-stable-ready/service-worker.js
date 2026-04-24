@@ -1,4 +1,4 @@
-const CACHE_NAME = "luckin-cn-stable-v1";
+const CACHE_NAME = "luckin-cn-stable-v2";
 const ASSETS = [
   "./",
   "./index.html",
