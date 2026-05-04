@@ -1340,6 +1340,18 @@ body.has-lightbox-open {
   background: rgba(255, 255, 255, 0.08);
 }
 
+.process-card {
+  background:
+    radial-gradient(circle at 18% 16%, rgba(183, 255, 126, 0.13), transparent 26%),
+    radial-gradient(circle at 84% 84%, rgba(255, 191, 112, 0.1), transparent 28%),
+    var(--glass-fill);
+}
+
+.process-card .card-version {
+  color: rgba(239, 246, 255, 0.86);
+  background: rgba(183, 255, 126, 0.12);
+}
+
 .is-filtered-out {
   display: none !important;
 }
