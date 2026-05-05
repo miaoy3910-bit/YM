@@ -26,6 +26,30 @@ const state = {
 let printState = [];
 let lastLightboxTrigger = null;
 
+const versionOrder = {
+  "5.11": 10,
+  "5.1": 20,
+  "4.27": 30,
+  "4.20": 40,
+};
+
+function sortCardsByVersion() {
+  document.querySelectorAll(".library-grid, .support-grid").forEach((grid) => {
+    const cards = Array.from(grid.children).filter((node) => node.matches("[data-version]"));
+
+    cards
+      .map((card, index) => ({
+        card,
+        index,
+        weight: versionOrder[card.dataset.version] || 999,
+      }))
+      .sort((a, b) => a.weight - b.weight || a.index - b.index)
+      .forEach(({ card }) => grid.appendChild(card));
+  });
+}
+
+sortCardsByVersion();
+
 searchableTexts.forEach((node) => {
   originalTextMap.set(node, node.innerHTML);
 });
