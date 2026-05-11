@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <title>正在刷新瑞幸新品配方速记</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+        background: #07111f;
+        color: #eef5ff;
+      }
+
+      body {
+        min-height: 100vh;
+        margin: 0;
+        display: grid;
+        place-items: center;
+        background:
+          radial-gradient(circle at 20% 20%, rgba(124, 241, 255, 0.22), transparent 28%),
+          radial-gradient(circle at 78% 72%, rgba(184, 255, 126, 0.18), transparent 30%),
+          linear-gradient(135deg, #081426, #0b1d25 58%, #07111f);
+      }
+
+      main {
+        width: min(86vw, 520px);
+        padding: 34px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        border-radius: 28px;
+        background: rgba(255, 255, 255, 0.08);
+        box-shadow: 0 28px 80px rgba(0, 0, 0, 0.34);
+        backdrop-filter: blur(28px) saturate(160%);
+        text-align: center;
+      }
+
+      h1 {
+        margin: 0 0 12px;
+        font-size: clamp(28px, 7vw, 46px);
+        letter-spacing: -0.06em;
+      }
+
+      p {
+        margin: 0;
+        color: rgba(238, 245, 255, 0.78);
+        line-height: 1.7;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>正在进入最新版</h1>
+      <p>正在清理旧缓存并重新加载 5.18 新品配方速记。</p>
+    </main>
+    <script>
+      async function refreshSite() {
+        try {
+          if ("serviceWorker" in navigator) {
+            const registrations = await navigator.serviceWorker.getRegistrations();
+            await Promise.all(registrations.map((registration) => registration.unregister()));
+          }
+
+          if ("caches" in window) {
+            const keys = await caches.keys();
+            await Promise.all(keys.filter((key) => key.startsWith("luckin-cn-stable-")).map((key) => caches.delete(key)));
+          }
+        } catch (error) {
+          // Even if cache cleanup fails, the cache-busting URL below still requests the latest page.
+        }
+
+        window.location.replace("./?v=5-18-final-20260511-2");
+      }
+
+      refreshSite();
+    </script>
+  </body>
+</html>
