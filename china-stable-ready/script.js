@@ -27,10 +27,11 @@ let printState = [];
 let lastLightboxTrigger = null;
 
 const versionOrder = {
-  "5.11": 10,
-  "5.1": 20,
-  "4.27": 30,
-  "4.20": 40,
+  "5.18": 10,
+  "5.11": 20,
+  "5.1": 30,
+  "4.27": 40,
+  "4.20": 50,
 };
 
 function sortCardsByVersion() {

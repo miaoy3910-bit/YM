@@ -1,4 +1,4 @@
-const CACHE_NAME = "luckin-cn-stable-v8";
+const CACHE_NAME = "luckin-cn-stable-v10";
 const ASSETS = [
   "./",
   "./index.html",
@@ -42,6 +42,32 @@ self.addEventListener("fetch", (event) => {
   const url = new URL(request.url);
 
   if (url.origin !== self.location.origin) {
+    return;
+  }
+
+  if (request.mode === "navigate" || url.pathname.endsWith(".html")) {
+    event.respondWith(
+      fetch(request)
+        .then((networkResponse) => {
+          const responseClone = networkResponse.clone();
+          caches.open(CACHE_NAME).then((cache) => cache.put("./index.html", responseClone));
+          return networkResponse;
+        })
+        .catch(() => caches.match("./index.html"))
+    );
+    return;
+  }
+
+  if (url.pathname.endsWith("/script.js") || url.pathname.endsWith("/styles.css")) {
+    event.respondWith(
+      fetch(request)
+        .then((networkResponse) => {
+          const responseClone = networkResponse.clone();
+          caches.open(CACHE_NAME).then((cache) => cache.put(request, responseClone));
+          return networkResponse;
+        })
+        .catch(() => caches.match(request))
+    );
     return;
   }
 

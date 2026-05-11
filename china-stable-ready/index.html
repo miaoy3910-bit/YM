@@ -16,7 +16,7 @@
     <header class="topbar">
       <div class="brand-group">
         <div class="brand">Luckin Recipe Library</div>
-        <p class="brand-subtitle">4.20 + 4.27 + 5.1 + 5.11 新品速记整合版 · 3D UI Upgrade</p>
+        <p class="brand-subtitle">4.20 + 4.27 + 5.1 + 5.11 + 5.18 新品速记整合版 · 3D UI Upgrade</p>
       </div>
       <nav class="nav">
         <a href="#overview">首页</a>
@@ -33,7 +33,7 @@
           <p class="eyebrow">门店培训配方库</p>
           <h1>瑞幸新品配方速记</h1>
           <p class="hero-text">
-            页面同时收录 4.20、4.27、5.1 和 5.11 多版内容，并把查找方式改成更适合门店实操的检索库。
+            页面同时收录 4.20、4.27、5.1、5.11 和 5.18 多版内容，并把查找方式改成更适合门店实操的检索库。
             你能得到更强的 3D 视觉层次，同时保留版本筛选、类型筛选、关键词搜索、折叠和打印能力。
           </p>
           <div class="hero-actions">
@@ -59,7 +59,7 @@
                 <span>Lucking</span>
                 <span>Coffe</span>
               </h2>
-              <p class="hero-wordmark-meta">Recipe Library · 4.20 + 4.27 + 5.1 + 5.11</p>
+              <p class="hero-wordmark-meta">Recipe Library · 4.20 + 4.27 + 5.1 + 5.11 + 5.18</p>
             </div>
             <div class="hero-floating-pill hero-floating-pill-a">Glass Surface</div>
             <div class="hero-floating-pill hero-floating-pill-b">Search Ready</div>
@@ -71,15 +71,15 @@
               <span>版本整合</span>
               <b>门店快查</b>
             </div>
-            <strong>4.20 + 4.27 + 5.1 + 5.11</strong>
+            <strong>5.18 + 5.11 + 5.1 + 4.27 + 4.20</strong>
             <p>回归饮品、新品、原料更新、选项更新、茶汤、器具包材统一归档，减少来回翻找。</p>
             <div class="hero-inline-metrics">
               <div class="hero-inline-metric">
-                <em>06</em>
+                <em>11</em>
                 <small>饮品配方</small>
               </div>
               <div class="hero-inline-metric">
-                <em>10</em>
+                <em>19</em>
                 <small>辅助信息</small>
               </div>
               <div class="hero-inline-metric">
@@ -121,15 +121,15 @@
 
       <section class="metrics-strip section">
         <div class="stat-card" data-reveal data-tilt>
-          <span>4</span>
+          <span>5</span>
           <p>速记版本</p>
         </div>
         <div class="stat-card" data-reveal data-tilt>
-          <span>9</span>
+          <span>11</span>
           <p>饮品配方</p>
         </div>
         <div class="stat-card" data-reveal data-tilt>
-          <span>16</span>
+          <span>19</span>
           <p>辅助信息块</p>
         </div>
         <div class="stat-card" data-reveal data-tilt>
@@ -144,6 +144,9 @@
           <h2>先看饮品名，再直接进入对应配方。</h2>
         </div>
         <div class="quick-chip-list" data-reveal>
+          <a href="#recipe-cocoa-vienna" class="quick-chip" data-tilt>可可维也纳</a>
+          <a href="#recipe-crimson-moonlight" class="quick-chip" data-tilt>绯色月光</a>
+          <a href="#prep-518" class="quick-chip" data-tilt>5.18 预制物料</a>
           <a href="#recipe-kumquat-americano" class="quick-chip" data-tilt>小青桔美式</a>
           <a href="#recipe-kumquat-tea" class="quick-chip" data-tilt>小青桔冰茶</a>
           <a href="#process-kumquat-clean" class="quick-chip" data-tilt>青金桔清洗流程</a>
@@ -163,7 +166,7 @@
             <p class="eyebrow">检索工具</p>
             <h2>把查配方这件事，做得更接近门店真实使用方式。</h2>
             <p>
-              先选版本，再选信息类型，再输入关键词。比如可以搜“葡萄”“20oz”“轻咖”“杨梅泥”“抹茶”“青金桔”“清洗”“茶汤”“器具”。
+              先选版本，再选信息类型，再输入关键词。比如可以搜“维也纳”“绯色月光”“金酒”“可可粉”“葡萄”“20oz”“轻咖”“杨梅泥”“抹茶”“青金桔”“清洗”“茶汤”“器具”。
               搜索会自动高亮结果，并把匹配模块展开。
             </p>
           </div>
@@ -174,7 +177,7 @@
               <input
                 id="searchInput"
                 type="search"
-                placeholder="输入饮品名、版本、杯型、原料或步骤，例如：轻咖 / 杨梅 / 20oz / 茶汤"
+                placeholder="输入饮品名、版本、杯型、原料或步骤，例如：维也纳 / 绯色月光 / 金酒 / 20oz / 茶汤"
                 autocomplete="off"
               />
             </label>
@@ -183,6 +186,7 @@
               <span class="filter-label">版本筛选</span>
               <div class="filter-row">
                 <button class="filter-chip is-active" type="button" data-filter-group="version" data-filter-value="all">全部</button>
+                <button class="filter-chip" type="button" data-filter-group="version" data-filter-value="5.18">5.18</button>
                 <button class="filter-chip" type="button" data-filter-group="version" data-filter-value="5.11">5.11</button>
                 <button class="filter-chip" type="button" data-filter-group="version" data-filter-value="5.1">5.1</button>
                 <button class="filter-chip" type="button" data-filter-group="version" data-filter-value="4.27">4.27</button>
@@ -218,10 +222,198 @@
       <section class="section" id="drink-library">
         <div class="section-heading" data-reveal>
           <p class="eyebrow">饮品配方库</p>
-          <h2>每张卡片对应一款饮品，展开就是完整做法。</h2>
+          <h2>按最新日期在前排序，展开卡片即可查看完整做法。</h2>
         </div>
 
         <div class="library-grid">
+          <details class="library-card recipe-card feature-card" id="recipe-cocoa-vienna" open data-searchable data-version="5.18" data-type="drink" data-name="可可维也纳 香草籽糖浆 巧克力预调液 牛乳 维也纳搅打奶油 可可粉 12oz U型冰杯 5.18" data-reveal data-tilt>
+            <summary>
+              <div>
+                <span class="card-version">5.18 新品</span>
+                <strong>可可维也纳</strong>
+                <small>咖啡、香草籽糖浆、巧克力预调液与维也纳搅打奶油组合；不可去冰少冰</small>
+              </div>
+            </summary>
+            <div class="card-body searchable-text">
+              <div class="tag-row">
+                <span class="info-tag">新饮品</span>
+                <span class="info-tag">咖啡</span>
+                <span class="info-tag">12oz U型冰杯</span>
+                <span class="info-tag">维也纳奶油顶</span>
+              </div>
+              <section class="recipe-subsection">
+                <h4>制作步骤</h4>
+                <ol>
+                  <li>咖啡入小号奶缸备用。</li>
+                  <li>冰摇壶中加入香草籽糖浆 3 泵。</li>
+                  <li>加入巧克力预调液至 50ml。</li>
+                  <li>加入牛乳至 100ml。</li>
+                  <li>加入直饮水至 150ml。</li>
+                  <li>加入 12oz 一平铲冰块。</li>
+                  <li>咖啡入冰摇壶，上下摇匀。</li>
+                  <li>入杯，铺维也纳搅打奶油。</li>
+                  <li>可可粉撒粉装饰。</li>
+                </ol>
+              </section>
+              <section class="note-box">
+                奶油顶需匀速横向从一端拉至另一端，重复 3 次即可；堂食不扣盖、打包扣盖，无外卖；不可去冰少冰。
+              </section>
+            </div>
+          </details>
+
+          <details class="library-card recipe-card feature-card" id="recipe-crimson-moonlight" open data-searchable data-version="5.18" data-type="drink" data-name="绯色月光 金酒 荔枝汁 葡萄 青露 咖啡 樱花荔枝云顶 树莓粉 含酒精 不含酒精 5.18" data-reveal data-tilt>
+            <summary>
+              <div>
+                <span class="card-version">5.18 新品</span>
+                <strong>绯色月光</strong>
+                <small>荔枝、葡萄、青露、咖啡与樱花荔枝云顶组合，区分含酒精与不含酒精两种做法</small>
+              </div>
+            </summary>
+            <div class="card-body searchable-text">
+              <div class="tag-row">
+                <span class="info-tag">新饮品</span>
+                <span class="info-tag">咖啡</span>
+                <span class="info-tag">含酒精 / 不含酒精</span>
+                <span class="info-tag">樱花荔枝云顶</span>
+              </div>
+              <section class="recipe-subsection">
+                <h4>含酒精版本</h4>
+                <ol>
+                  <li>用调酒量杯量取 15ml 金酒入杯。</li>
+                  <li>加入荔枝汁 30ml。</li>
+                  <li>加入葡萄至 100ml。</li>
+                  <li>加入青露至 150ml。</li>
+                  <li>加入冰块至 300ml。</li>
+                  <li>转移入杯。</li>
+                  <li>加入咖啡并搅拌。</li>
+                  <li>铺樱花荔枝云顶。</li>
+                  <li>树莓粉撒粉 1 下。</li>
+                </ol>
+              </section>
+              <section class="recipe-subsection">
+                <h4>不含酒精版本</h4>
+                <ol>
+                  <li>不加入金酒。</li>
+                  <li>荔枝汁 30ml + 葡萄至 100ml + 青露至 150ml + 冰块至 300ml。</li>
+                  <li>转移入杯，加入咖啡并搅拌。</li>
+                  <li>铺樱花荔枝云顶，树莓粉撒粉 1 下。</li>
+                </ol>
+              </section>
+              <section class="note-box">
+                堂食不扣盖、打包扣盖，无外卖；不可去冰少冰。含酒精版本需按门店出品规范明确区分。
+              </section>
+            </div>
+          </details>
+
+          <details class="library-card support-card feature-card" open data-searchable data-version="5.18" data-type="ingredient" data-name="5.18 新增原料 香草籽风味饮料浓浆 糖浆 可可粉 液体奶酪 荔枝汁 金酒 樱花味云感粉 树莓粉 5.18" data-reveal data-tilt>
+            <summary>
+              <div>
+                <span class="card-version">5.18 原料</span>
+                <strong>新增原料</strong>
+                <small>按储存方式拆分，方便当班检查备货与效期</small>
+              </div>
+            </summary>
+            <div class="card-body searchable-text">
+              <div class="info-grid">
+                <section class="recipe-subsection">
+                  <h4>常规新增</h4>
+                  <ul>
+                    <li>香草籽风味饮料浓浆（糖浆）</li>
+                    <li>可可粉</li>
+                    <li>荔枝汁</li>
+                    <li>添加利伦敦干味金酒</li>
+                    <li>樱花味云感粉</li>
+                    <li>树莓粉</li>
+                  </ul>
+                </section>
+                <section class="recipe-subsection">
+                  <h4>冷藏重点</h4>
+                  <ul>
+                    <li>液体奶酪：需提前预冷 3h。</li>
+                    <li>液体奶酪预冷后不超过 48 小时。</li>
+                    <li>除荔枝汁以外，其余新增原料均常温储存。</li>
+                  </ul>
+                </section>
+              </div>
+            </div>
+          </details>
+
+          <details class="library-card support-card feature-card" open data-searchable data-version="5.18" data-type="tool" data-name="5.18 新增器具 新增包材 撒罐粉 冷水壶 奶油枪 维也纳扁形花嘴 花嘴转接头 调酒量杯 12ozU型冰杯 杯托 特调卡 5.18" data-reveal data-tilt>
+            <summary>
+              <div>
+                <span class="card-version">5.18 器具包材</span>
+                <strong>新增器具与包材</strong>
+                <small>制作奶油顶、酒精饮品和 12oz U 型冰杯出品相关</small>
+              </div>
+            </summary>
+            <div class="card-body searchable-text">
+              <div class="info-grid">
+                <section class="recipe-subsection">
+                  <h4>新增器具</h4>
+                  <ul>
+                    <li>撒罐粉 × 2</li>
+                    <li>冷水壶 × 1</li>
+                    <li>奶油枪 × 1</li>
+                    <li>维也纳扁形花嘴 × 1</li>
+                    <li>花嘴转接头 × 1</li>
+                    <li>调酒量杯 × 1</li>
+                  </ul>
+                </section>
+                <section class="recipe-subsection">
+                  <h4>新增包材</h4>
+                  <ul>
+                    <li>12oz U 型冰杯</li>
+                    <li>一杯杯托 / 两杯杯托</li>
+                    <li>特调卡：维也纳 + 绯色月光</li>
+                  </ul>
+                </section>
+              </div>
+            </div>
+          </details>
+
+          <details class="library-card support-card process-card feature-card" id="prep-518" open data-searchable data-version="5.18" data-type="process" data-name="5.18 新增预制物料 巧克力预调液 维也纳搅打奶油 樱花荔枝云顶 冰沙壶 奶泡壶 气弹 5.18" data-reveal data-tilt>
+            <summary>
+              <div>
+                <span class="card-version">5.18 预制</span>
+                <strong>新增预制物料</strong>
+                <small>巧克力预调液、维也纳搅打奶油、樱花荔枝云顶集中查看</small>
+              </div>
+            </summary>
+            <div class="card-body searchable-text">
+              <section class="recipe-subsection">
+                <h4>巧克力预调液</h4>
+                <p>先热水再可可粉，常温储存 12 小时。</p>
+                <div class="prep-table" role="table" aria-label="巧克力预调液预制方案">
+                  <div role="row"><span>预制方案</span><span>预制器具</span><span>热水</span><span>可可粉</span></div>
+                  <div role="row"><span>12g</span><span>冰沙壶（1/A 键）</span><span>200g</span><span>12g</span></div>
+                  <div role="row"><span>24g</span><span>冰沙壶（1/A 键）</span><span>400g</span><span>24g</span></div>
+                </div>
+              </section>
+              <section class="recipe-subsection">
+                <h4>维也纳搅打奶油</h4>
+                <ol>
+                  <li>香草籽糖浆 6 泵。</li>
+                  <li>淡奶油 370g + 液体奶酪 230g。</li>
+                  <li>搅拌后装入奶油枪。</li>
+                  <li>装气弹并充气。</li>
+                  <li>大力摇晃 60 下。</li>
+                </ol>
+                <p class="inline-alert">冷藏储存，闭店废弃。</p>
+              </section>
+              <section class="recipe-subsection">
+                <h4>樱花荔枝云顶</h4>
+                <ol>
+                  <li>纯牛奶 200g。</li>
+                  <li>荔枝汁 20g。</li>
+                  <li>青露 70g。</li>
+                  <li>樱花云感粉 25g。</li>
+                  <li>奶泡壶按 “2/B” 键。</li>
+                </ol>
+                <p class="inline-alert">奶泡壶制作，冷藏储存，闭店废弃。</p>
+              </section>
+            </div>
+          </details>
+
           <details class="library-card recipe-card" id="recipe-kumquat-americano" open data-searchable data-version="5.11" data-type="drink" data-name="小青桔美式 青金桔 美式 咖啡 大杯 超大杯 青金桔果汁 5.11" data-reveal data-tilt>
             <summary>
               <div>
