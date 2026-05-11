@@ -1,4 +1,4 @@
-const CACHE_NAME = "luckin-cn-stable-v13";
+const CACHE_NAME = "luckin-cn-stable-v15";
 const ASSETS = [
   "./",
   "./index.html",
@@ -8,9 +8,33 @@ const ASSETS = [
   "./avocado-20.jpg",
   "./mango-u.jpg",
   "./mango-20.jpg",
-  "./crimson-moon.jpg",
+  "./crimson-moon.b64",
   "./.nojekyll",
 ];
+
+function base64ToBytes(value) {
+  const binary = atob(value.trim());
+  const bytes = new Uint8Array(binary.length);
+
+  for (let index = 0; index < binary.length; index += 1) {
+    bytes[index] = binary.charCodeAt(index);
+  }
+
+  return bytes;
+}
+
+function crimsonMoonPhotoResponse() {
+  return fetch("./crimson-moon.b64", { cache: "reload" })
+    .then((response) => response.text())
+    .then((base64) =>
+      new Response(base64ToBytes(base64), {
+        headers: {
+          "Content-Type": "image/jpeg",
+          "Cache-Control": "no-store",
+        },
+      })
+    );
+}
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
@@ -43,6 +67,11 @@ self.addEventListener("fetch", (event) => {
   const url = new URL(request.url);
 
   if (url.origin !== self.location.origin) {
+    return;
+  }
+
+  if (url.pathname.endsWith("/crimson-moon.jpg")) {
+    event.respondWith(crimsonMoonPhotoResponse().catch(() => fetch(request)));
     return;
   }
 
