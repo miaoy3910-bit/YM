@@ -34,6 +34,95 @@ const versionOrder = {
   "4.20": 50,
 };
 
+function ensureCrimsonMoonPhoto() {
+  const card = document.querySelector("#recipe-crimson-moonlight .card-body");
+
+  if (!card || card.querySelector(".crimson-photo-frame")) {
+    return;
+  }
+
+  const firstSection = card.querySelector(".recipe-subsection");
+
+  if (!firstSection) {
+    return;
+  }
+
+  if (!document.querySelector("#crimson-photo-style")) {
+    const style = document.createElement("style");
+    style.id = "crimson-photo-style";
+    style.textContent = `
+      .crimson-showcase {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(220px, 0.72fr);
+        gap: 22px;
+        align-items: center;
+        margin-top: 16px;
+      }
+
+      .crimson-showcase .recipe-subsection:first-child {
+        margin-top: 0;
+      }
+
+      .crimson-photo-frame {
+        align-self: center;
+        transform: translateY(4px);
+      }
+
+      .crimson-photo-frame .recipe-reference-shell {
+        aspect-ratio: 4 / 5;
+      }
+
+      .crimson-photo-image {
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
+
+      @media (max-width: 1120px) {
+        .crimson-showcase {
+          grid-template-columns: 1fr;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+  }
+
+  const showcase = document.createElement("div");
+  showcase.className = "crimson-showcase";
+  firstSection.before(showcase);
+  showcase.appendChild(firstSection);
+
+  const figure = document.createElement("figure");
+  figure.className = "recipe-visual-frame crimson-photo-frame";
+  figure.innerHTML = `
+    <figcaption>
+      <span>绯色月光实拍图</span>
+      <small>点击查看大图</small>
+    </figcaption>
+    <a
+      class="recipe-image-trigger"
+      href="./crimson-moon.jpg"
+      data-lightbox-src="./crimson-moon.jpg"
+      data-lightbox-alt="绯色月光实拍图"
+      data-lightbox-caption="绯色月光实拍图"
+    >
+      <span class="recipe-reference-shell">
+        <img
+          src="./crimson-moon.jpg"
+          alt="绯色月光饮品实拍图"
+          class="recipe-reference-image crimson-photo-image"
+          loading="lazy"
+          decoding="async"
+        />
+      </span>
+    </a>
+  `;
+
+  showcase.appendChild(figure);
+}
+
+ensureCrimsonMoonPhoto();
+
 function sortCardsByVersion() {
   document.querySelectorAll(".library-grid, .support-grid").forEach((grid) => {
     const cards = Array.from(grid.children).filter((node) => node.matches("[data-version]"));

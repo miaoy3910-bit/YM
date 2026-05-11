@@ -1,4 +1,4 @@
-const CACHE_NAME = "luckin-cn-stable-v11";
+const CACHE_NAME = "luckin-cn-stable-v12";
 const ASSETS = [
   "./",
   "./index.html",
@@ -8,6 +8,7 @@ const ASSETS = [
   "./avocado-20.jpg",
   "./mango-u.jpg",
   "./mango-20.jpg",
+  "./crimson-moon.jpg",
   "./.nojekyll",
 ];
 
